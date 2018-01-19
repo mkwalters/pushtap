@@ -12,12 +12,20 @@ import GameplayKit
 class GameScene: SKScene {
 
     
-    var sensitivity_display = SKLabelNode(text: "0")
+    var left_sensitivity_display = SKLabelNode(text: "0")
+    var left_push_or_tap =  ""
+    var left_push_or_tap_display = SKLabelNode(text: "9")
+    
+    
+    var right_sensitivity_display = SKLabelNode(text: "0")
+    var right_push_or_tap =  ""
+    var right_push_or_tap_display = SKLabelNode(text: "9")
     
     
     let left_bar = SKSpriteNode()
     
-    
+    var left_force = CGFloat(0)
+    var right_force = CGFloat(0)
     
     func spawn_rectangles() {
         spawn_rectangle(side: "left")
@@ -71,7 +79,6 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         
         self.view?.isMultipleTouchEnabled = true
-        backgroundColor = SKColor.gray
         
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
@@ -85,13 +92,31 @@ class GameScene: SKScene {
         
         
         // Get label node from scene and store it for use later
-        self.backgroundColor = UIColor.white
+        self.backgroundColor = UIColor.gray
         //sensitivity display
-        sensitivity_display.position = CGPoint(x: 0, y: 300)
-        sensitivity_display.fontColor = SKColor.red
-        sensitivity_display.fontSize = 80
+        left_sensitivity_display.position = CGPoint(x: -200, y: 300)
+        left_sensitivity_display.fontColor = SKColor.red
+        left_sensitivity_display.fontSize = 80
         
-        addChild(sensitivity_display)
+        left_push_or_tap_display.position = CGPoint(x: -200, y: 400)
+        left_push_or_tap_display.fontColor = SKColor.red
+        left_push_or_tap_display.fontSize = 80
+        
+        addChild(left_push_or_tap_display)
+        
+        addChild(left_sensitivity_display)
+        
+        right_push_or_tap_display.position = CGPoint(x: 200, y: 400)
+        right_push_or_tap_display.fontColor = SKColor.red
+        right_push_or_tap_display.fontSize = 80
+        
+        addChild(right_push_or_tap_display)
+        
+        right_sensitivity_display.position = CGPoint(x: 200, y: 300)
+        right_sensitivity_display.fontColor = SKColor.red
+        right_sensitivity_display.fontSize = 80
+        
+        addChild(right_sensitivity_display)
         
         spawn_delay()
     }
@@ -122,8 +147,25 @@ class GameScene: SKScene {
             //print(touch.force)
             
             if (touch.location(in: self).x > 0 ) {
-                sensitivity_display.text = String(describing: touch.force)
-                print("right")
+                right_sensitivity_display.text = String(describing: round(touch.force))
+                right_force = touch.force
+                if ( touch.force >  (touch.maximumPossibleForce / 2.0) ) {
+                    right_push_or_tap = "push"
+                    right_push_or_tap_display.text = "push"
+                } else {
+                    right_push_or_tap = "tap"
+                    right_push_or_tap_display.text = "tap"
+                }
+            } else {
+                left_sensitivity_display.text = String(describing: round(touch.force))
+                left_force = touch.force
+                if ( touch.force >  (touch.maximumPossibleForce / 2.0) ) {
+                    left_push_or_tap = "push"
+                    left_push_or_tap_display.text = "push"
+                } else {
+                    left_push_or_tap = "tap"
+                    left_push_or_tap_display.text = "tap"
+                }
             }
 
             
