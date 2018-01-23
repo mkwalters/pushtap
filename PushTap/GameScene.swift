@@ -73,12 +73,12 @@ class GameScene: SKScene {
         let screenHeight = screenSize.height
         
         left_finish_line = SKSpriteNode(color: UIColor.black, size: CGSize(width: screenWidth / 2, height: 50.0))
-        left_finish_line.position = CGPoint(x:  screenWidth / -2, y: 3 * screenHeight / -4)
+        left_finish_line.position = CGPoint(x:  -200, y: 3 * screenHeight / -4)
         left_finish_line.zPosition = 100
         addChild(left_finish_line)
         
         right_finish_line = SKSpriteNode(color: UIColor.black, size: CGSize(width: screenWidth / 2, height: 50.0))
-        right_finish_line.position = CGPoint(x:  screenWidth / 2, y: 3 * screenHeight / -4)
+        right_finish_line.position = CGPoint(x:  200, y: 3 * screenHeight / -4)
         right_finish_line.zPosition = 100
         addChild(right_finish_line)
         
@@ -91,7 +91,7 @@ class GameScene: SKScene {
         
         
         // Get label node from scene and store it for use later
-        self.backgroundColor = UIColor.gray
+        self.backgroundColor = UIColor.darkGray
         //sensitivity display
         left_sensitivity_display.position = CGPoint(x: -200, y: 300)
         left_sensitivity_display.fontColor = SKColor.red
