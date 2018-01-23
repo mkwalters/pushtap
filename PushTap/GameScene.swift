@@ -43,7 +43,7 @@ class GameScene: SKScene {
         self.view?.isMultipleTouchEnabled = true
         
         self.size = SCREEN_SIZE
-        //self.anchorPoint = CGPoint(x: 0, y: 0)
+        self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
         restart_button.fontColor = SKColor.green
         restart_button.position = CGPoint(x: 0, y: 500)
