@@ -20,6 +20,9 @@ class GameScene: SKScene {
     var right_finish_line = SKSpriteNode()
     
     
+    var dead = false
+    
+    
     var right_sensitivity_display = SKLabelNode(text: "0")
     var right_push_or_tap =  ""
     var right_push_or_tap_display = SKLabelNode(text: "9")
@@ -308,14 +311,20 @@ class GameScene: SKScene {
     
     func report_death() {
         
-        let death_report = SKLabelNode(text: "YOU DIED")
-        death_report.position = CGPoint(x: 0, y: 0)
-        death_report.fontColor = SKColor.red
-        death_report.fontSize = 100
+        if dead == false {
         
-        
-        //toggle this to trigger reports
-        //addChild(death_report)
+            let death_report = SKLabelNode(text: "YOU DIED")
+            death_report.position = CGPoint(x: 0, y: 0)
+            death_report.fontColor = SKColor.red
+            death_report.fontSize = 100
+            
+            
+            //toggle this to trigger reports
+            addChild(death_report)
+            
+            dead = true
+            
+        }
         
         
         
@@ -323,6 +332,9 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+        
+        
+        
         
         for obstacle in obstacles {
             if left_finish_line.intersects(obstacle)  && (left_finish_line.color != obstacle.color) {
