@@ -43,13 +43,26 @@ class GameScene: SKScene {
     
     let restart_button = SKLabelNode(text: "RESTART")
     
+    
+    // we really hsould build more constants
+    var left_sensity_slider = SKSpriteNode(color: SKColor.purple, size: CGSize(width: 40, height: 50))
+    
+    
+    
+    
     func update_score(new_score: Double) {
-        score_report.text = String(new_score)
+        score_report.text = String(Int(new_score))
     }
     
     
     func create_scene() {
         self.view?.isMultipleTouchEnabled = true
+        
+        
+        left_sensity_slider.color = SKColor.purple
+        
+        //left_sensity_slider.anchorPoint = CGPoint(x: 0, y: 0.5)
+
         
         
         score_report.position = CGPoint(x: 0, y: 0)
@@ -72,21 +85,24 @@ class GameScene: SKScene {
         let screenWidth = screenSize.width
         let screenHeight = screenSize.height
         
-        left_finish_line = SKSpriteNode(color: UIColor.black, size: CGSize(width: screenWidth / 2, height: 50.0))
+        left_finish_line = SKSpriteNode(color: UIColor.black, size: CGSize(width: 300, height: 50.0))
         left_finish_line.position = CGPoint(x:  -200, y: 3 * screenHeight / -4)
         left_finish_line.zPosition = 100
-        addChild(left_finish_line)
+        //left_finish_line.anchorPoint = CGPoint(x: 0, y: 0.5)
         
-        right_finish_line = SKSpriteNode(color: UIColor.black, size: CGSize(width: screenWidth / 2, height: 50.0))
+        //Instead of adding child nodes to the sprite node whose anchorPoint got changed, use a common parent node (SKNode). Add the sprite node to the parent node
+        
+        left_sensity_slider.position = CGPoint(x: 0 , y: 0)
+        left_sensity_slider.zPosition = 10000
+        
+        addChild(left_finish_line)
+        left_finish_line.addChild(left_sensity_slider)
+        
+        right_finish_line = SKSpriteNode(color: UIColor.black, size: CGSize(width: 275, height: 50.0))
         right_finish_line.position = CGPoint(x:  200, y: 3 * screenHeight / -4)
         right_finish_line.zPosition = 100
         addChild(right_finish_line)
         
-        
-        left_bar.position = CGPoint(x: 0, y: 0)
-        left_bar.color = SKColor.gray
-        left_bar.size = CGSize(width: screenWidth, height: 50)
-        addChild(left_bar)
         
         
         
@@ -207,7 +223,7 @@ class GameScene: SKScene {
         
         let reveal = SKTransition.doorsOpenHorizontal(withDuration: 0.25)
         let gameScene = GameScene()
-        self.view?.presentScene(gameScene)
+        self.view?.presentScene(gameScene, transition: reveal)
         
     }
     
