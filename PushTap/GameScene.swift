@@ -324,6 +324,20 @@ class GameScene: SKScene {
         
     }
     
+    
+    func stop_all_actions() {
+        for obstacle in obstacles {
+            obstacle.removeAllActions()
+        }
+        
+        for rectangle in rectangles {
+            rectangle.removeAllActions()
+        }
+        
+        
+        self.removeAllActions()
+    }
+    
     func report_death() {
         
         if dead == false {
@@ -333,6 +347,8 @@ class GameScene: SKScene {
             death_report.fontColor = SKColor.red
             death_report.fontSize = 100
             
+            
+            stop_all_actions()
             
             //toggle this to trigger reports
             addChild(death_report)
