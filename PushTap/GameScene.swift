@@ -16,6 +16,9 @@ class GameScene: SKScene {
     var left_push_or_tap =  ""
     var left_push_or_tap_display = SKLabelNode(text: "9")
     
+    var left_finish_line = SKSpriteNode()
+    var right_finish_line = SKSpriteNode()
+    
     
     var right_sensitivity_display = SKLabelNode(text: "0")
     var right_push_or_tap =  ""
@@ -26,6 +29,11 @@ class GameScene: SKScene {
     
     var left_force = CGFloat(0)
     var right_force = CGFloat(0)
+    
+    var rectangles :[SKSpriteNode] = [SKSpriteNode]()
+    var obstacles :[SKSpriteNode] = [SKSpriteNode]()
+    
+    var generator = UIFeedbackGenerator()
     
     func spawn_rectangles() {
         spawn_rectangle(side: "left")
@@ -39,7 +47,7 @@ class GameScene: SKScene {
             self.spawn_rectangles()
             
         })
-        let delay = SKAction.wait(forDuration: 1.7)
+        let delay = SKAction.wait(forDuration: 2.0)
         
         let spawn_delay = SKAction.group([spawn, delay])
         
@@ -54,24 +62,39 @@ class GameScene: SKScene {
         let diceroll = arc4random() % 2
         var color = SKColor.black
         
+        let obstacle = SKSpriteNode(color: UIColor.black, size: CGSize(width: 800, height: 30))
+        obstacle.position = CGPoint(x: 0, y: 1050)
+        addChild(obstacle)
+        
         if (diceroll == 0) {
             color = SKColor.blue
         } else {
             color = SKColor.red
         }
         
-        let drop_down = SKAction.moveBy(x: 0, y: -1500, duration: 3)
+        let drop_down = SKAction.moveBy(x: 0, y: -1800, duration: 4.5)
+        
+        let delete_self = SKAction.run {
+            self.rectangles[0].removeFromParent()
+            self.rectangles.remove(at: 0)
+            self.obstacles[0].removeFromParent()
+            self.obstacles.remove(at: 0)
+        }
+        
+        let drop_down_and_delete = SKAction.sequence([drop_down, delete_self])
         
         let rectangle = SKSpriteNode(color: color, size: CGSize(width: 150, height: 150))
-        rectangle.run(drop_down)
-        rectangle.position = CGPoint(x: 0, y: 550)
-        
+        rectangle.run(drop_down_and_delete)
+        rectangle.position = CGPoint(x: 0, y: 700)
+        //dont delete self for obstacles
+        obstacle.run(drop_down)
         if (side == "left") {
             rectangle.position.x -= 200
         } else {
             rectangle.position.x += 200
         }
-        
+        obstacles.append(obstacle)
+        rectangles.append(rectangle)
         addChild(rectangle)
 
     }
@@ -83,6 +106,17 @@ class GameScene: SKScene {
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
         let screenHeight = screenSize.height
+        
+        left_finish_line = SKSpriteNode(color: UIColor.black, size: CGSize(width: screenWidth / 2, height: 50.0))
+        left_finish_line.position = CGPoint(x:  screenWidth / -2, y: 3 * screenHeight / -4)
+        left_finish_line.zPosition = 100
+        addChild(left_finish_line)
+        
+        right_finish_line = SKSpriteNode(color: UIColor.black, size: CGSize(width: screenWidth / 2, height: 50.0))
+        right_finish_line.position = CGPoint(x:  screenWidth / 2, y: 3 * screenHeight / -4)
+        right_finish_line.zPosition = 100
+        addChild(right_finish_line)
+        
         
         left_bar.position = CGPoint(x: 0, y: 0)
         left_bar.color = SKColor.gray
@@ -133,55 +167,122 @@ class GameScene: SKScene {
         
     }
     
+    func vibrateWithHaptic() {
+    let generator = UIImpactFeedbackGenerator(style: .heavy)
+    generator.prepare()
+    
+    generator.impactOccurred()
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         //spawn_rectangles()
         print("hi mel :)")
-        
+        vibrateWithHaptic()
 //        for touch in touches {
 //            print(touch.force)
 //        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        
+        
         for touch in touches {
+//            var touching_left = false
+//            var touching_right = false
+            
             //print(touch.force)
+            //print(touches.count)
             
             if (touch.location(in: self).x > 0 ) {
+                //touching_right = true
                 right_sensitivity_display.text = String(describing: round(touch.force))
                 right_force = touch.force
                 if ( touch.force >  (touch.maximumPossibleForce / 2.0) ) {
                     right_push_or_tap = "push"
                     right_push_or_tap_display.text = "push"
+                    right_finish_line.color = SKColor.red
                 } else {
                     right_push_or_tap = "tap"
                     right_push_or_tap_display.text = "tap"
+                    right_finish_line.color = SKColor.blue
                 }
             } else {
+                //touching_left = true
                 left_sensitivity_display.text = String(describing: round(touch.force))
                 left_force = touch.force
                 if ( touch.force >  (touch.maximumPossibleForce / 2.0) ) {
                     left_push_or_tap = "push"
                     left_push_or_tap_display.text = "push"
+                    left_finish_line.color = SKColor.red
                 } else {
                     left_push_or_tap = "tap"
                     left_push_or_tap_display.text = "tap"
+                    left_finish_line.color = SKColor.blue
                 }
             }
-
             
+//            if touching_left == false {
+//                left_finish_line.color = SKColor.black
+//            }
+//            if touching_right == false {
+//                right_finish_line.color = SKColor.black
+//            }
+//
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        for touch in touches {
+            if (touch.location(in: self).x >= 0) {
+                right_finish_line.color = SKColor.black
+            } else {
+                left_finish_line.color = SKColor.black
+            }
+        }
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
         
     }
     
+    func report_death() {
+        let death_report = SKLabelNode(text: "YOU DIED")
+        death_report.position = CGPoint(x: 0, y: 0)
+        death_report.fontColor = SKColor.red
+        death_report.fontSize = 100
+        
+        addChild(death_report)
+        
+        
+        
+    }
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+        
+        for obstacle in obstacles {
+            if left_finish_line.intersects(obstacle)  && (left_finish_line.color != obstacle.color) {
+                print("dead")
+                report_death()
+            }
+            if right_finish_line.intersects(obstacle)  && (right_finish_line.color != obstacle.color) {
+                print("dead")
+                report_death()
+            }
+        }
+        
+        for rectangle in rectangles {
+            if left_finish_line.intersects(rectangle)  && (left_finish_line.color != rectangle.color) {
+                print("dead")
+                report_death()
+            }
+            if right_finish_line.intersects(rectangle)  && (right_finish_line.color != rectangle.color) {
+                print("dead")
+                report_death()
+            }
+        }
+        
+        
     }
 }
