@@ -20,8 +20,10 @@ class GameScene: SKScene {
     var right_finish_line = SKSpriteNode()
     
     
-    var dead = false
+    var score_report = SKLabelNode(text: "0")
     
+    var dead = false
+    var score = 0.0
     
     var right_sensitivity_display = SKLabelNode(text: "0")
     var right_push_or_tap =  ""
@@ -41,9 +43,19 @@ class GameScene: SKScene {
     
     let restart_button = SKLabelNode(text: "RESTART")
     
+    func update_score(new_score: Double) {
+        score_report.text = String(new_score)
+    }
+    
     
     func create_scene() {
         self.view?.isMultipleTouchEnabled = true
+        
+        
+        score_report.position = CGPoint(x: 0, y: 0)
+        score_report.fontSize = 100
+        score_report.fontColor = SKColor.red
+        addChild(score_report)
         
         self.size = SCREEN_SIZE
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -52,7 +64,7 @@ class GameScene: SKScene {
         restart_button.position = CGPoint(x: 0, y: 500)
         restart_button.fontSize = 70
         restart_button.name = "restart"
-        
+        score = 0
         
         addChild(restart_button)
         
@@ -169,6 +181,9 @@ class GameScene: SKScene {
         obstacles.append(obstacle)
         rectangles.append(rectangle)
         addChild(rectangle)
+        
+        rectangle.name = "untouched" // this is kind of hacky. we might just want a class soon
+        obstacle.name = "untouched"
 
     }
     
@@ -314,7 +329,7 @@ class GameScene: SKScene {
         if dead == false {
         
             let death_report = SKLabelNode(text: "YOU DIED")
-            death_report.position = CGPoint(x: 0, y: 0)
+            death_report.position = CGPoint(x: 0, y: 200)
             death_report.fontColor = SKColor.red
             death_report.fontSize = 100
             
@@ -337,12 +352,30 @@ class GameScene: SKScene {
         
         
         for obstacle in obstacles {
+            
+            // theres a few conditions to check here
+            // i have a feeling that this could be written really cleanly if we ask smart questions
+            
             if left_finish_line.intersects(obstacle)  && (left_finish_line.color != obstacle.color) {
                 report_death()
             }
             if right_finish_line.intersects(obstacle)  && (right_finish_line.color != obstacle.color) {
                 report_death()
             }
+            
+            // be careful mixing this logic because they should hit and and lose if they press
+            //the untouched logic could fuck things
+            if left_finish_line.intersects(obstacle) && ( left_finish_line.color == obstacle.color && right_finish_line.color == obstacle.color) {
+                if obstacle.name == "untouched" {
+                    score += 0.5 // this is really hacky and shitty
+                    // i dont know why but its incrementing score twice
+                    //this seems really consistent
+                    obstacle.name = "touched"
+                    update_score(new_score: score)
+                    
+                }
+            }
+            
         }
         
         for rectangle in rectangles {
@@ -353,6 +386,7 @@ class GameScene: SKScene {
                 report_death()
             }
         }
+        
         
         
     }
