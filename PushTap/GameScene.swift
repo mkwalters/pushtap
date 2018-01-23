@@ -11,7 +11,7 @@ import GameplayKit
 
 class GameScene: SKScene {
 
-    
+    let SCREEN_SIZE = CGSize(width: 750.0, height: 1334.0)
     var left_sensitivity_display = SKLabelNode(text: "0")
     var left_push_or_tap =  ""
     var left_push_or_tap_display = SKLabelNode(text: "9")
@@ -34,6 +34,76 @@ class GameScene: SKScene {
     var obstacles :[SKSpriteNode] = [SKSpriteNode]()
     
     var generator = UIFeedbackGenerator()
+    
+    
+    let restart_button = SKLabelNode(text: "RESTART")
+    
+    
+    func create_scene() {
+        self.view?.isMultipleTouchEnabled = true
+        
+        self.size = SCREEN_SIZE
+        //self.anchorPoint = CGPoint(x: 0, y: 0)
+        
+        restart_button.fontColor = SKColor.green
+        restart_button.position = CGPoint(x: 0, y: 500)
+        restart_button.fontSize = 70
+        restart_button.name = "restart"
+        
+        
+        addChild(restart_button)
+        
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        let screenHeight = screenSize.height
+        
+        left_finish_line = SKSpriteNode(color: UIColor.black, size: CGSize(width: screenWidth / 2, height: 50.0))
+        left_finish_line.position = CGPoint(x:  screenWidth / -2, y: 3 * screenHeight / -4)
+        left_finish_line.zPosition = 100
+        addChild(left_finish_line)
+        
+        right_finish_line = SKSpriteNode(color: UIColor.black, size: CGSize(width: screenWidth / 2, height: 50.0))
+        right_finish_line.position = CGPoint(x:  screenWidth / 2, y: 3 * screenHeight / -4)
+        right_finish_line.zPosition = 100
+        addChild(right_finish_line)
+        
+        
+        left_bar.position = CGPoint(x: 0, y: 0)
+        left_bar.color = SKColor.gray
+        left_bar.size = CGSize(width: screenWidth, height: 50)
+        addChild(left_bar)
+        
+        
+        
+        // Get label node from scene and store it for use later
+        self.backgroundColor = UIColor.gray
+        //sensitivity display
+        left_sensitivity_display.position = CGPoint(x: -200, y: 300)
+        left_sensitivity_display.fontColor = SKColor.red
+        left_sensitivity_display.fontSize = 80
+        
+        left_push_or_tap_display.position = CGPoint(x: -200, y: 400)
+        left_push_or_tap_display.fontColor = SKColor.red
+        left_push_or_tap_display.fontSize = 80
+        
+        addChild(left_push_or_tap_display)
+        
+        addChild(left_sensitivity_display)
+        
+        right_push_or_tap_display.position = CGPoint(x: 200, y: 400)
+        right_push_or_tap_display.fontColor = SKColor.red
+        right_push_or_tap_display.fontSize = 80
+        
+        addChild(right_push_or_tap_display)
+        
+        right_sensitivity_display.position = CGPoint(x: 200, y: 300)
+        right_sensitivity_display.fontColor = SKColor.red
+        right_sensitivity_display.fontSize = 80
+        
+        addChild(right_sensitivity_display)
+        
+        spawn_delay()
+    }
     
     func spawn_rectangles() {
         spawn_rectangle(side: "left")
@@ -100,59 +170,27 @@ class GameScene: SKScene {
     }
     
     override func didMove(to view: SKView) {
+        create_scene()
+    }
+    
+    func restart_scene() {
         
-        self.view?.isMultipleTouchEnabled = true
-        
-        let screenSize = UIScreen.main.bounds
-        let screenWidth = screenSize.width
-        let screenHeight = screenSize.height
-        
-        left_finish_line = SKSpriteNode(color: UIColor.black, size: CGSize(width: screenWidth / 2, height: 50.0))
-        left_finish_line.position = CGPoint(x:  screenWidth / -2, y: 3 * screenHeight / -4)
-        left_finish_line.zPosition = 100
-        addChild(left_finish_line)
-        
-        right_finish_line = SKSpriteNode(color: UIColor.black, size: CGSize(width: screenWidth / 2, height: 50.0))
-        right_finish_line.position = CGPoint(x:  screenWidth / 2, y: 3 * screenHeight / -4)
-        right_finish_line.zPosition = 100
-        addChild(right_finish_line)
-        
-        
-        left_bar.position = CGPoint(x: 0, y: 0)
-        left_bar.color = SKColor.gray
-        left_bar.size = CGSize(width: screenWidth, height: 50)
-        addChild(left_bar)
+        removeAllActions()
+        removeAllChildren()
+        for obstacle in obstacles {
+            obstacle.removeAllActions()
+        }
+        for rectangle in rectangles {
+            rectangle.removeAllActions()
+        }
+        obstacles = []
+        rectangles = []
         
         
+        let reveal = SKTransition.doorsOpenHorizontal(withDuration: 0.25)
+        let gameScene = GameScene()
+        self.view?.presentScene(gameScene)
         
-        // Get label node from scene and store it for use later
-        self.backgroundColor = UIColor.gray
-        //sensitivity display
-        left_sensitivity_display.position = CGPoint(x: -200, y: 300)
-        left_sensitivity_display.fontColor = SKColor.red
-        left_sensitivity_display.fontSize = 80
-        
-        left_push_or_tap_display.position = CGPoint(x: -200, y: 400)
-        left_push_or_tap_display.fontColor = SKColor.red
-        left_push_or_tap_display.fontSize = 80
-        
-        addChild(left_push_or_tap_display)
-        
-        addChild(left_sensitivity_display)
-        
-        right_push_or_tap_display.position = CGPoint(x: 200, y: 400)
-        right_push_or_tap_display.fontColor = SKColor.red
-        right_push_or_tap_display.fontSize = 80
-        
-        addChild(right_push_or_tap_display)
-        
-        right_sensitivity_display.position = CGPoint(x: 200, y: 300)
-        right_sensitivity_display.fontColor = SKColor.red
-        right_sensitivity_display.fontSize = 80
-        
-        addChild(right_sensitivity_display)
-        
-        spawn_delay()
     }
     
     
@@ -177,7 +215,29 @@ class GameScene: SKScene {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         //spawn_rectangles()
         print("hi mel :)")
+        print(self.size)
         vibrateWithHaptic()
+        
+        for touch in touches {
+
+            let positionInScene = touch.location(in: self)
+            let touchedNode = atPoint(positionInScene)
+            
+            if let name = touchedNode.name {
+                
+                if name == "restart" {
+                    print("trying to restart")
+                    restart_scene()
+                    
+                    
+                }
+                
+            }
+            
+        }
+        
+        
+        
 //        for touch in touches {
 //            print(touch.force)
 //        }
@@ -247,12 +307,15 @@ class GameScene: SKScene {
     }
     
     func report_death() {
+        
         let death_report = SKLabelNode(text: "YOU DIED")
         death_report.position = CGPoint(x: 0, y: 0)
         death_report.fontColor = SKColor.red
         death_report.fontSize = 100
         
-        addChild(death_report)
+        
+        //toggle this to trigger reports
+        //addChild(death_report)
         
         
         
@@ -263,22 +326,18 @@ class GameScene: SKScene {
         
         for obstacle in obstacles {
             if left_finish_line.intersects(obstacle)  && (left_finish_line.color != obstacle.color) {
-                print("dead")
                 report_death()
             }
             if right_finish_line.intersects(obstacle)  && (right_finish_line.color != obstacle.color) {
-                print("dead")
                 report_death()
             }
         }
         
         for rectangle in rectangles {
             if left_finish_line.intersects(rectangle)  && (left_finish_line.color != rectangle.color) {
-                print("dead")
                 report_death()
             }
             if right_finish_line.intersects(rectangle)  && (right_finish_line.color != rectangle.color) {
-                print("dead")
                 report_death()
             }
         }
