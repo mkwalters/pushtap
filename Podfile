@@ -6,7 +6,7 @@ target 'PushTap' do
   use_frameworks!
 
   # Pods for PushTap
-
+  pod 'Firebase/AdMob'
   target 'PushTapTests' do
     inherit! :search_paths
     # Pods for testing

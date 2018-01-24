@@ -9,11 +9,18 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import Firebase
 
 class GameViewController: UIViewController {
+    
+    var interstitial: GADInterstitial!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        let request = GADRequest()
+        interstitial.load(request)
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
