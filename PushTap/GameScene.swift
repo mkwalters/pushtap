@@ -43,10 +43,10 @@ class GameScene: SKScene {
     
     let restart_button = SKLabelNode(text: "RESTART")
     
+    var emitter = SKEmitterNode()
     
     // we really hsould build more constants
-    var left_sensity_slider = SKSpriteNode(color: SKColor.purple, size: CGSize(width: 40, height: 50))
-    
+    var left_sensity_slider = SKSpriteNode(color: SKColor.purple, size: CGSize(width: 20, height: 50))
     
     
     
@@ -63,6 +63,13 @@ class GameScene: SKScene {
         
         //left_sensity_slider.anchorPoint = CGPoint(x: 0, y: 0.5)
 
+        
+        
+        emitter.particlePosition = CGPoint(x: 0, y: 0)
+        emitter.particleBirthRate = 1.0
+        emitter.numParticlesToEmit = 1000
+        emitter.targetNode = self.scene
+        addChild(emitter)
         
         
         score_report.position = CGPoint(x: 0, y: 0)
@@ -85,7 +92,7 @@ class GameScene: SKScene {
         let screenWidth = screenSize.width
         let screenHeight = screenSize.height
         
-        left_finish_line = SKSpriteNode(color: UIColor.black, size: CGSize(width: 300, height: 50.0))
+        left_finish_line = SKSpriteNode(color: UIColor.black, size: CGSize(width: 275, height: 50.0))
         left_finish_line.position = CGPoint(x:  -200, y: 3 * screenHeight / -4)
         left_finish_line.zPosition = 100
         //left_finish_line.anchorPoint = CGPoint(x: 0, y: 0.5)
@@ -375,8 +382,6 @@ class GameScene: SKScene {
             dead = true
             
         }
-        
-        
         
     }
     

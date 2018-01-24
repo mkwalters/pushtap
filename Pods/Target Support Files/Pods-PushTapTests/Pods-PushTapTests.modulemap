@@ -1,0 +1,6 @@
+framework module Pods_PushTapTests {
+  umbrella header "Pods-PushTapTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
