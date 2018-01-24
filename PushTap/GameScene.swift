@@ -252,6 +252,7 @@ class GameScene: SKScene {
         print(self.size)
         vibrateWithHaptic()
         
+        
         for touch in touches {
 
             let positionInScene = touch.location(in: self)
@@ -279,7 +280,7 @@ class GameScene: SKScene {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        
+        if dead == false {
         
         for touch in touches {
 //            var touching_left = false
@@ -323,6 +324,8 @@ class GameScene: SKScene {
 //                right_finish_line.color = SKColor.black
 //            }
 //
+        }
+            
         }
     }
     
