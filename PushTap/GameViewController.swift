@@ -20,7 +20,9 @@ class GameViewController: UIViewController {
         
         interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
         let request = GADRequest()
+        request.testDevices = ["25c0bcb0d1bc91ac3a3e7ff59a1216f7"]
         interstitial.load(request)
+        
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
@@ -36,6 +38,19 @@ class GameViewController: UIViewController {
             
             view.showsFPS = true
             view.showsNodeCount = true
+        }
+    }
+    
+    func foobar() {
+        
+    }
+    
+    @IBAction func doSomething(_ sender: AnyObject) {
+        
+        if interstitial.isReady {
+            interstitial.present(fromRootViewController: self)
+        } else {
+            print("Ad wasn't ready")
         }
     }
 

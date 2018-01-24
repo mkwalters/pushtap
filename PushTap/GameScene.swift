@@ -48,6 +48,7 @@ class GameScene: SKScene {
     // we really hsould build more constants
     var left_sensity_slider = SKSpriteNode(color: SKColor.purple, size: CGSize(width: 20, height: 50))
     
+
     
     
     func update_score(new_score: Double) {
@@ -57,6 +58,8 @@ class GameScene: SKScene {
     
     func create_scene() {
         self.view?.isMultipleTouchEnabled = true
+        
+        
         
         
         left_sensity_slider.color = SKColor.purple
