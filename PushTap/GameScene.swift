@@ -295,8 +295,6 @@ class GameScene: SKScene {
                 // if paused game == false
                 
                 if name == "pause" {
-//                    let reveal = SKTransition.doorsOpenHorizontal(withDuration: 0.25)
-//                    self.view?.presentScene(StartMenu(), transition: reveal)
                     
                     pause_background.position = CGPoint(x: 0, y: 0)
                     pause_background.zPosition = 999999998
@@ -347,6 +345,8 @@ class GameScene: SKScene {
                 }
                 if touchedNode.name == "exit" {
                     print("trying to exit")
+                    let reveal = SKTransition.doorsOpenHorizontal(withDuration: 0.25)
+                    self.view?.presentScene(StartMenu(), transition: reveal)
                 }
                 
                 
