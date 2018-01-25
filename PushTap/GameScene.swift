@@ -22,9 +22,12 @@ class GameScene: SKScene {
     var pause = SKLabelNode(text: "pause")
     
     var score_report = SKLabelNode(text: "0")
+    var restart = SKLabelNode()
     
     var dead = false
     var score = 0.0
+    var resume = SKLabelNode()
+    var exit = SKLabelNode()
     
     var right_sensitivity_display = SKLabelNode(text: "0")
     var right_push_or_tap =  ""
@@ -40,6 +43,8 @@ class GameScene: SKScene {
     var obstacles :[SKSpriteNode] = [SKSpriteNode]()
     
     var generator = UIFeedbackGenerator()
+    
+    let pause_background = SKShapeNode(rectOf: CGSize(width: 650, height: 1100))
     
     
     let restart_button = SKLabelNode(text: "RESTART")
@@ -263,8 +268,8 @@ class GameScene: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         //spawn_rectangles()
-        print("hi mel :)")
-        print(self.size)
+        //print("hi mel :)")
+        //print(self.size)
         vibrateWithHaptic()
         
         
@@ -280,10 +285,70 @@ class GameScene: SKScene {
                     restart_scene()
                 }
                 
+                
+                //SIGBART ERROR
+                // there are fucked things happening when you press pause twice.
+                // most of the code for this pause is from bit crawler
+                //ooooohhhh
+                // this is goig on because we are trying to readd the screen and shit
+                //SOLUTION
+                // if paused game == false
+                
                 if name == "pause" {
-                    let reveal = SKTransition.doorsOpenHorizontal(withDuration: 0.25)
-                    self.view?.presentScene(StartMenu(), transition: reveal)
+//                    let reveal = SKTransition.doorsOpenHorizontal(withDuration: 0.25)
+//                    self.view?.presentScene(StartMenu(), transition: reveal)
+                    
+                    pause_background.position = CGPoint(x: 0, y: 0)
+                    pause_background.zPosition = 999999998
+                    pause_background.fillColor = SKColor.black
+                    
+                    
+                    
+                    resume = SKLabelNode(text: "Resume")
+                    resume.position = CGPoint(x: 0, y: 200)
+                    resume.fontName = "PressStart2P"
+                    resume.fontSize = 70
+                    resume.fontColor = SKColor.blue
+                    resume.name = "resume"
+                    resume.zPosition = 999999999
+                    
+                    restart = SKLabelNode(text: "Restart")
+                    restart.position = CGPoint(x: 0, y: 0)
+                    restart.fontName = "PressStart2P"
+                    restart.fontSize = 70
+                    //                restart.fontColor = blue
+                    restart.name = "restart"
+                    restart.zPosition = 999999999
+                    
+                    
+                    exit = SKLabelNode(text: "Exit")
+                    exit.position = CGPoint(x: 0, y: -200)
+                    exit.fontName = "PressStart2P"
+                    exit.fontSize = 60
+                    exit.fontColor = SKColor.blue
+                    exit.name = "exit"
+                    exit.zPosition = 999999999
+                    
+                    //paused_game = true
+                    
+                    self.addChild(pause_background)
+                    pause_background.addChild(resume)
+                    pause_background.addChild(exit)
+                    pause_background.addChild(restart)
                 }
+                
+                if touchedNode.name == "resume" {
+                    print("trying to resume")
+                }
+                
+                if touchedNode.name == "restart" {
+                    print("tring to restart")
+                    
+                }
+                if touchedNode.name == "exit" {
+                    print("trying to exit")
+                }
+                
                 
             }
             
