@@ -97,7 +97,7 @@ class GameScene: SKScene {
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
         restart_button.fontColor = SKColor.green
-        restart_button.position = CGPoint(x: 0, y: 500)
+        restart_button.position = CGPoint(x: 0, y: 0)
         restart_button.fontSize = 70
         restart_button.name = "restart"
         score = 0
@@ -271,6 +271,7 @@ class GameScene: SKScene {
     
     
     func resume_game() {
+        paused_game = false
         pause_background.removeFromParent()
         resume_obstacles_and_rectangles()
     }
@@ -322,7 +323,7 @@ class GameScene: SKScene {
                 
                 if name == "pause" {
                     
-                    if paused_game == false {
+                    if paused_game == false && dead == false {
                         
                         pause_obstacles_and_rectangles()
                         
