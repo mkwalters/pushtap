@@ -269,7 +269,14 @@ class GameScene: SKScene {
     
     
     func resume_obstacles_and_rectangles() {
+        isPaused = false
+        for obstacle in obstacles {
+            obstacle.isPaused = false
+        }
         
+        for rectangle in rectangles {
+            rectangle.isPaused = false
+        }
     }
     
     
@@ -356,6 +363,8 @@ class GameScene: SKScene {
                 
                 if touchedNode.name == "resume" {
                     print("trying to resume")
+                    
+                    resume_obstacles_and_rectangles()
                 }
                 
                 if touchedNode.name == "restart" {
