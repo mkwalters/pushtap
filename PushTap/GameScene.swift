@@ -67,6 +67,7 @@ class GameScene: SKScene {
         self.view?.isMultipleTouchEnabled = true
         
         
+        paused_game = false
         
         
         left_sensity_slider.color = SKColor.purple
@@ -268,6 +269,12 @@ class GameScene: SKScene {
     }
     
     
+    func resume_game() {
+        pause_background.removeFromParent()
+        resume_obstacles_and_rectangles()
+    }
+    
+    
     func resume_obstacles_and_rectangles() {
         isPaused = false
         for obstacle in obstacles {
@@ -364,7 +371,7 @@ class GameScene: SKScene {
                 if touchedNode.name == "resume" {
                     print("trying to resume")
                     
-                    resume_obstacles_and_rectangles()
+                    resume_game()
                 }
                 
                 if touchedNode.name == "restart" {
