@@ -5,13 +5,13 @@
 //  Created by Mitchell Walters on 1/17/18.
 //  Copyright © 2018 Mitchell Walters. All rights reserved.
 //
+let SCREEN_SIZE = CGSize(width: 750.0, height: 1334.0)
 
 import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
 
-    let SCREEN_SIZE = CGSize(width: 750.0, height: 1334.0)
     var left_sensitivity_display = SKLabelNode(text: "0")
     var left_push_or_tap =  ""
     var left_push_or_tap_display = SKLabelNode(text: "9")
@@ -19,6 +19,7 @@ class GameScene: SKScene {
     var left_finish_line = SKSpriteNode()
     var right_finish_line = SKSpriteNode()
     
+    var pause = SKLabelNode(text: "pause")
     
     var score_report = SKLabelNode(text: "0")
     
@@ -65,7 +66,11 @@ class GameScene: SKScene {
         left_sensity_slider.color = SKColor.purple
         
         //left_sensity_slider.anchorPoint = CGPoint(x: 0, y: 0.5)
-
+        
+        pause.position = CGPoint(x: -1 * SCREEN_SIZE.width / 2.0 + 100, y: SCREEN_SIZE.height / 2.0 - 100)
+        pause.name = "pause"
+        pause.fontSize = 70
+        addChild(pause)
         
         
         emitter.particlePosition = CGPoint(x: 0, y: 0)
@@ -75,7 +80,7 @@ class GameScene: SKScene {
         addChild(emitter)
         
         
-        score_report.position = CGPoint(x: 0, y: 0)
+        score_report.position = CGPoint(x: SCREEN_SIZE.width / 2.0 - 100, y: SCREEN_SIZE.height / 2.0 - 100)
         score_report.fontSize = 100
         score_report.fontColor = SKColor.red
         addChild(score_report)
@@ -89,7 +94,7 @@ class GameScene: SKScene {
         restart_button.name = "restart"
         score = 0
         
-        addChild(restart_button)
+        
         
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
@@ -127,21 +132,21 @@ class GameScene: SKScene {
         left_push_or_tap_display.fontColor = SKColor.red
         left_push_or_tap_display.fontSize = 80
         
-        addChild(left_push_or_tap_display)
-        
-        addChild(left_sensitivity_display)
+//        addChild(left_push_or_tap_display)
+//
+//        addChild(left_sensitivity_display)
         
         right_push_or_tap_display.position = CGPoint(x: 200, y: 400)
         right_push_or_tap_display.fontColor = SKColor.red
         right_push_or_tap_display.fontSize = 80
         
-        addChild(right_push_or_tap_display)
+        //addChild(right_push_or_tap_display)
         
         right_sensitivity_display.position = CGPoint(x: 200, y: 300)
         right_sensitivity_display.fontColor = SKColor.red
         right_sensitivity_display.fontSize = 80
         
-        addChild(right_sensitivity_display)
+        //addChild(right_sensitivity_display)
         
         spawn_delay()
     }
@@ -273,8 +278,11 @@ class GameScene: SKScene {
                 if name == "restart" {
                     print("trying to restart")
                     restart_scene()
-                    
-                    
+                }
+                
+                if name == "pause" {
+                    let reveal = SKTransition.doorsOpenHorizontal(withDuration: 0.25)
+                    self.view?.presentScene(StartMenu(), transition: reveal)
                 }
                 
             }
@@ -376,7 +384,7 @@ class GameScene: SKScene {
             death_report.fontColor = SKColor.red
             death_report.fontSize = 100
             
-            
+            addChild(restart_button)
             stop_all_actions()
             
             //toggle this to trigger reports

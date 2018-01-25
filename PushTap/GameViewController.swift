@@ -17,28 +17,39 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let menuScene = StartMenu()
+        //MenuScene.
+        let skView = view as! SKView
+        //        skView.showsFPS = true
+        //        skView.showsNodeCount = true
+        skView.ignoresSiblingOrder = true
+        //menuScene.scaleMode = .resizeFill
+        //menuScene.inputViewController = self
+        skView.presentScene(menuScene)
+        skView.showsFPS = true
+        skView.showsNodeCount = true
         
-        interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
-        let request = GADRequest()
-        request.testDevices = ["25c0bcb0d1bc91ac3a3e7ff59a1216f7"]
-        interstitial.load(request)
-        
-        
-        if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
-            if let scene = SKScene(fileNamed: "GameScene") {
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                
-                // Present the scene
-                view.presentScene(scene)
-            }
-            
-            view.ignoresSiblingOrder = true
-            
-            view.showsFPS = true
-            view.showsNodeCount = true
-        }
+//        interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+//        let request = GADRequest()
+//        request.testDevices = ["25c0bcb0d1bc91ac3a3e7ff59a1216f7"]
+//        interstitial.load(request)
+//
+//
+//        if let view = self.view as! SKView? {
+//            // Load the SKScene from 'GameScene.sks'
+//            if let scene = SKScene(fileNamed: "StartMenu") {
+//                // Set the scale mode to scale to fit the window
+//                scene.scaleMode = .aspectFill
+//
+//                // Present the scene
+//                view.presentScene(scene)
+//            }
+//
+//            view.ignoresSiblingOrder = true
+//
+//            view.showsFPS = true
+//            view.showsNodeCount = true
+//        }
     }
     
     func foobar() {

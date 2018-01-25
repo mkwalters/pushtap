@@ -23,6 +23,8 @@
 		F7FDECBC2019360000D52E2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7FDECBB2019360000D52E2A /* GoogleService-Info.plist */; };
 		F7FDECBD2019360000D52E2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7FDECBB2019360000D52E2A /* GoogleService-Info.plist */; };
 		F7FDECBE2019360000D52E2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7FDECBB2019360000D52E2A /* GoogleService-Info.plist */; };
+		F7FDED0E2019BD0500D52E2A /* StartMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FDED0D2019BD0500D52E2A /* StartMenu.swift */; };
+		F7FDED102019C30A00D52E2A /* DifficultySelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FDED0F2019C30A00D52E2A /* DifficultySelection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		F7F533DF20104A16004A214D /* PushTapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushTapUITests.swift; sourceTree = "<group>"; };
 		F7F533E120104A16004A214D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7FDECBB2019360000D52E2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F7FDED0D2019BD0500D52E2A /* StartMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartMenu.swift; sourceTree = SOURCE_ROOT; };
+		F7FDED0F2019C30A00D52E2A /* DifficultySelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultySelection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +151,8 @@
 		F7F533B820104A16004A214D /* PushTap */ = {
 			isa = PBXGroup;
 			children = (
+				F7FDED0D2019BD0500D52E2A /* StartMenu.swift */,
+				F7FDED0F2019C30A00D52E2A /* DifficultySelection.swift */,
 				F7F533B920104A16004A214D /* AppDelegate.swift */,
 				F7F533BB20104A16004A214D /* GameScene.sks */,
 				F7F533BD20104A16004A214D /* Actions.sks */,
@@ -480,6 +486,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7F533C020104A16004A214D /* GameScene.swift in Sources */,
+				F7FDED0E2019BD0500D52E2A /* StartMenu.swift in Sources */,
+				F7FDED102019C30A00D52E2A /* DifficultySelection.swift in Sources */,
 				F7F533C220104A16004A214D /* GameViewController.swift in Sources */,
 				F7F533BA20104A16004A214D /* AppDelegate.swift in Sources */,
 			);
