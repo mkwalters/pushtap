@@ -76,6 +76,7 @@ class GameScene: SKScene {
         
         pause.position = CGPoint(x: -1 * SCREEN_SIZE.width / 2.0 + 100, y: SCREEN_SIZE.height / 2.0 - 100)
         pause.name = "pause"
+        pause.zPosition = 1000000
         pause.fontSize = 70
         addChild(pause)
         
