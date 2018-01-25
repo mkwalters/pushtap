@@ -267,6 +267,23 @@ class GameScene: SKScene {
     generator.impactOccurred()
     }
     
+    
+    func resume_obstacles_and_rectangles() {
+        
+    }
+    
+    
+    func pause_obstacles_and_rectangles() {
+        isPaused = true
+        for obstacle in obstacles {
+            obstacle.isPaused = true
+        }
+        
+        for rectangle in rectangles {
+            rectangle.isPaused = true
+        }
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         //spawn_rectangles()
         //print("hi mel :)")
@@ -292,6 +309,7 @@ class GameScene: SKScene {
                     
                     if paused_game == false {
                         
+                        pause_obstacles_and_rectangles()
                         
                         paused_game = true
                     
