@@ -46,6 +46,7 @@ class GameScene: SKScene {
     
     let pause_background = SKShapeNode(rectOf: CGSize(width: 650, height: 1100))
     
+    var paused_game = false
     
     let restart_button = SKLabelNode(text: "RESTART")
     
@@ -284,55 +285,55 @@ class GameScene: SKScene {
                     print("trying to restart")
                     restart_scene()
                 }
+
                 
-                
-                //SIGBART ERROR
-                // there are fucked things happening when you press pause twice.
-                // most of the code for this pause is from bit crawler
-                //ooooohhhh
-                // this is goig on because we are trying to readd the screen and shit
-                //SOLUTION
-                // if paused game == false
                 
                 if name == "pause" {
                     
-                    pause_background.position = CGPoint(x: 0, y: 0)
-                    pause_background.zPosition = 999999998
-                    pause_background.fillColor = SKColor.black
+                    if paused_game == false {
+                        
+                        
+                        paused_game = true
                     
-                    
-                    
-                    resume = SKLabelNode(text: "Resume")
-                    resume.position = CGPoint(x: 0, y: 200)
-                    resume.fontName = "PressStart2P"
-                    resume.fontSize = 70
-                    resume.fontColor = SKColor.blue
-                    resume.name = "resume"
-                    resume.zPosition = 999999999
-                    
-                    restart = SKLabelNode(text: "Restart")
-                    restart.position = CGPoint(x: 0, y: 0)
-                    restart.fontName = "PressStart2P"
-                    restart.fontSize = 70
-                    //                restart.fontColor = blue
-                    restart.name = "restart"
-                    restart.zPosition = 999999999
-                    
-                    
-                    exit = SKLabelNode(text: "Exit")
-                    exit.position = CGPoint(x: 0, y: -200)
-                    exit.fontName = "PressStart2P"
-                    exit.fontSize = 60
-                    exit.fontColor = SKColor.blue
-                    exit.name = "exit"
-                    exit.zPosition = 999999999
-                    
-                    //paused_game = true
-                    
-                    self.addChild(pause_background)
-                    pause_background.addChild(resume)
-                    pause_background.addChild(exit)
-                    pause_background.addChild(restart)
+                        pause_background.position = CGPoint(x: 0, y: 0)
+                        pause_background.zPosition = 999999998
+                        pause_background.fillColor = SKColor.black
+                        
+                        
+                        
+                        resume = SKLabelNode(text: "Resume")
+                        resume.position = CGPoint(x: 0, y: 200)
+                        resume.fontName = "PressStart2P"
+                        resume.fontSize = 70
+                        resume.fontColor = SKColor.blue
+                        resume.name = "resume"
+                        resume.zPosition = 999999999
+                        
+                        restart = SKLabelNode(text: "Restart")
+                        restart.position = CGPoint(x: 0, y: 0)
+                        restart.fontName = "PressStart2P"
+                        restart.fontSize = 70
+                        //                restart.fontColor = blue
+                        restart.name = "restart"
+                        restart.zPosition = 999999999
+                        
+                        
+                        exit = SKLabelNode(text: "Exit")
+                        exit.position = CGPoint(x: 0, y: -200)
+                        exit.fontName = "PressStart2P"
+                        exit.fontSize = 60
+                        exit.fontColor = SKColor.blue
+                        exit.name = "exit"
+                        exit.zPosition = 999999999
+                        
+                        //paused_game = true
+                        
+                        self.addChild(pause_background)
+                        pause_background.addChild(resume)
+                        pause_background.addChild(exit)
+                        pause_background.addChild(restart)
+                        
+                    }
                 }
                 
                 if touchedNode.name == "resume" {
