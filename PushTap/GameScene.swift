@@ -69,6 +69,7 @@ class GameScene: SKScene {
         
         paused_game = false
         
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showAd"), object: nil)
         
         left_sensity_slider.color = SKColor.purple
         
