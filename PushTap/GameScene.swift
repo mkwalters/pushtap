@@ -69,7 +69,6 @@ class GameScene: SKScene {
         
         paused_game = false
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showAd"), object: nil)
         
         left_sensity_slider.color = SKColor.purple
         
@@ -481,6 +480,7 @@ class GameScene: SKScene {
     func report_death() {
         
         if dead == false {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showAd"), object: nil)
         
             let death_report = SKLabelNode(text: "YOU DIED")
             death_report.position = CGPoint(x: 0, y: 200)
