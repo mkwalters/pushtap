@@ -24,6 +24,8 @@ class GameScene: SKScene {
     var score_report = SKLabelNode(text: "0")
     var restart = SKLabelNode()
     
+    var STARTING_LEFT_SENSITIVITY_SLIDER_X = CGPoint(x: 0, y: 0)
+    
     var dead = false
     var score = 0.0
     var resume = SKLabelNode()
@@ -69,7 +71,6 @@ class GameScene: SKScene {
         
         paused_game = false
         
-        
         left_sensity_slider.color = SKColor.purple
         
         //left_sensity_slider.anchorPoint = CGPoint(x: 0, y: 0.5)
@@ -105,17 +106,19 @@ class GameScene: SKScene {
         
         
         let screenSize = UIScreen.main.bounds
-        let screenWidth = screenSize.width
+        //let screenWidth = screenSize.width
         let screenHeight = screenSize.height
         
         left_finish_line = SKSpriteNode(color: UIColor.black, size: CGSize(width: 275, height: 50.0))
         left_finish_line.position = CGPoint(x:  -200, y: 3 * screenHeight / -4)
         left_finish_line.zPosition = 100
         //left_finish_line.anchorPoint = CGPoint(x: 0, y: 0.5)
-        
+        STARTING_LEFT_SENSITIVITY_SLIDER_X = CGPoint(x: -1 * left_finish_line.size.width / 2 , y: 0)
         //Instead of adding child nodes to the sprite node whose anchorPoint got changed, use a common parent node (SKNode). Add the sprite node to the parent node
         
-        left_sensity_slider.position = CGPoint(x: 0 , y: 0)
+        
+        
+        left_sensity_slider.position = STARTING_LEFT_SENSITIVITY_SLIDER_X
         left_sensity_slider.zPosition = 10000
         
         addChild(left_finish_line)
@@ -426,6 +429,9 @@ class GameScene: SKScene {
                 //touching_left = true
                 left_sensitivity_display.text = String(describing: round(touch.force))
                 left_force = touch.force
+                
+                left_sensity_slider.position.x = STARTING_LEFT_SENSITIVITY_SLIDER_X.x + ( (left_force) * left_finish_line.size.width ) / touch.maximumPossibleForce
+                
                 if ( touch.force >  (touch.maximumPossibleForce / 2.0) ) {
                     left_push_or_tap = "push"
                     left_push_or_tap_display.text = "push"
