@@ -483,6 +483,8 @@ class GameScene: SKScene {
         self.removeAllActions()
     }
     
+    
+    
     func report_death() {
         
         if dead == false {

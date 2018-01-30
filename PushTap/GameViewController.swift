@@ -11,7 +11,7 @@ import SpriteKit
 import GameplayKit
 import Firebase
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, GADInterstitialDelegate {
     
     var interstitial: GADInterstitial!
 
@@ -34,11 +34,25 @@ class GameViewController: UIViewController {
         interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
         let request = GADRequest()
         request.testDevices = ["25c0bcb0d1bc91ac3a3e7ff59a1216f7"]
+        interstitial.delegate = self
         interstitial.load(request)
 
     }
     
     func foobar() {
+        
+    }
+    
+    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+        //interstitial = createAndLoadInterstitial()
+        
+        print("i just dismissed the interstitial ad")
+        
+    }
+    
+    func interstitialDidReceiveAd(_ ad: GADInterstitial) {
+        
+        print("interstitialDidReceiveAd")
         
     }
     
