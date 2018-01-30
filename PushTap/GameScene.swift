@@ -59,7 +59,15 @@ class GameScene: SKScene {
     var left_sensitivity_slider = SKSpriteNode(color: SKColor.purple, size: CGSize(width: 20, height: 50))
     var right_sensitivity_slider = SKSpriteNode(color: SKColor.purple, size: CGSize(width: 20, height: 50))
     
-
+    
+    
+    //I SWEAR TO GOD YOU NEED TO PUT CREDIT FOR THIS IMAGE IN THE CREDITS OR CHOOSE A DIFFERENT ONE
+    //https://support.flaticon.com/hc/en-us/articles/207248209-How-I-must-insert-the-attribution-
+    //Designed by Freepik from www.flaticon.com IN CREDITS
+    //probably best to just find one under creative commons license
+    //its worth noting that we probably not necessary to implement a credits page
+    var pause_button = SKSpriteNode(imageNamed: "pause")
+    
     
     
     func update_score(new_score: Double) {
@@ -70,6 +78,10 @@ class GameScene: SKScene {
     func create_scene() {
         self.view?.isMultipleTouchEnabled = true
         
+        pause_button.position = CGPoint(x: 0, y: 0)
+        pause_button.scale(to: CGSize(width: pause_button.size.width * 1.8, height: pause_button.size.height * 1.8))
+        //addChild(pause_button)
+        
         
         paused_game = false
         
@@ -78,11 +90,11 @@ class GameScene: SKScene {
         
         //left_sensitivity_slider.anchorPoint = CGPoint(x: 0, y: 0.5)
         
-        pause.position = CGPoint(x: -1 * SCREEN_SIZE.width / 2.0 + 100, y: SCREEN_SIZE.height / 2.0 - 100)
-        pause.name = "pause"
-        pause.zPosition = 1000000
-        pause.fontSize = 70
-        addChild(pause)
+        pause_button.position = CGPoint(x: -1 * SCREEN_SIZE.width / 2.0 + 100, y: SCREEN_SIZE.height / 2.0 - 100)
+        pause_button.name = "pause"
+        // the high z position just ensures that the ui is always at the top level
+        pause_button.zPosition = 1000000
+        addChild(pause_button)
         
         
         emitter.particlePosition = CGPoint(x: 0, y: 0)
@@ -142,7 +154,10 @@ class GameScene: SKScene {
         
         
         // Get label node from scene and store it for use later
-        self.backgroundColor = UIColor.darkGray
+        
+        let dimming_magnitude = 254
+        self.backgroundColor = SKColor(red: CGFloat(255 - dimming_magnitude), green: CGFloat(255 - dimming_magnitude), blue: CGFloat(255 - dimming_magnitude), alpha: 1.0)
+        
         //sensitivity display
         left_sensitivity_display.position = CGPoint(x: -200, y: 300)
         left_sensitivity_display.fontColor = SKColor.red
