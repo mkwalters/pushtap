@@ -412,7 +412,7 @@ class GameScene: SKScene {
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        if dead == false {
+        if dead == false && paused_game == false {
         
         for touch in touches {
 //            var touching_left = false
