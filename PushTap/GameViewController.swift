@@ -31,7 +31,7 @@ class GameViewController: UIViewController, GADInterstitialDelegate {
         skView.showsFPS = true
         skView.showsNodeCount = true
         NotificationCenter.default.addObserver(self, selector: #selector(self.showAd), name: NSNotification.Name(rawValue: "showAd"), object: nil)
-        interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        interstitial = createAndLoadInterstitial()
         let request = GADRequest()
         request.testDevices = ["25c0bcb0d1bc91ac3a3e7ff59a1216f7"]
         interstitial.delegate = self
@@ -41,6 +41,13 @@ class GameViewController: UIViewController, GADInterstitialDelegate {
     
     func foobar() {
         
+    }
+    
+    func createAndLoadInterstitial() -> GADInterstitial {
+        var interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        interstitial.delegate = self
+        interstitial.load(GADRequest())
+        return interstitial
     }
     
     /// Tells the delegate an ad request succeeded.
@@ -65,7 +72,8 @@ class GameViewController: UIViewController, GADInterstitialDelegate {
     
     /// Tells the delegate the interstitial had been animated off the screen.
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
-        print("interstitialDidDismissScreen")
+        //print("interstitialDidDismissScreen")
+        interstitial = createAndLoadInterstitial()
     }
     
     /// Tells the delegate that a user click will open another app
