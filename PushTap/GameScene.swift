@@ -25,6 +25,7 @@ class GameScene: SKScene {
     var restart = SKLabelNode()
     
     var STARTING_LEFT_SENSITIVITY_SLIDER_X = CGPoint(x: 0, y: 0)
+    var STARTING_RIGHT_SENSITIVITY_SLIDER_X = CGPoint(x: 0, y: 0)
     
     var dead = false
     var score = 0.0
@@ -55,7 +56,8 @@ class GameScene: SKScene {
     var emitter = SKEmitterNode()
     
     // we really hsould build more constants
-    var left_sensity_slider = SKSpriteNode(color: SKColor.purple, size: CGSize(width: 20, height: 50))
+    var left_sensitivity_slider = SKSpriteNode(color: SKColor.purple, size: CGSize(width: 20, height: 50))
+    var right_sensitivity_slider = SKSpriteNode(color: SKColor.purple, size: CGSize(width: 20, height: 50))
     
 
     
@@ -71,9 +73,10 @@ class GameScene: SKScene {
         
         paused_game = false
         
-        left_sensity_slider.color = SKColor.purple
+        left_sensitivity_slider.color = SKColor.purple
+        right_sensitivity_slider.color = SKColor.purple
         
-        //left_sensity_slider.anchorPoint = CGPoint(x: 0, y: 0.5)
+        //left_sensitivity_slider.anchorPoint = CGPoint(x: 0, y: 0.5)
         
         pause.position = CGPoint(x: -1 * SCREEN_SIZE.width / 2.0 + 100, y: SCREEN_SIZE.height / 2.0 - 100)
         pause.name = "pause"
@@ -114,20 +117,26 @@ class GameScene: SKScene {
         left_finish_line.zPosition = 100
         //left_finish_line.anchorPoint = CGPoint(x: 0, y: 0.5)
         STARTING_LEFT_SENSITIVITY_SLIDER_X = CGPoint(x: -1 * left_finish_line.size.width / 2 , y: 0)
+        STARTING_RIGHT_SENSITIVITY_SLIDER_X = CGPoint(x: -1 * left_finish_line.size.width / 2 , y: 0)
         //Instead of adding child nodes to the sprite node whose anchorPoint got changed, use a common parent node (SKNode). Add the sprite node to the parent node
         
         
         
-        left_sensity_slider.position = STARTING_LEFT_SENSITIVITY_SLIDER_X
-        left_sensity_slider.zPosition = 10000
+        left_sensitivity_slider.position = STARTING_LEFT_SENSITIVITY_SLIDER_X
+        left_sensitivity_slider.zPosition = 10000
+        
+        right_sensitivity_slider.position = STARTING_RIGHT_SENSITIVITY_SLIDER_X
+        right_sensitivity_slider.zPosition = 10000
         
         addChild(left_finish_line)
-        left_finish_line.addChild(left_sensity_slider)
+        left_finish_line.addChild(left_sensitivity_slider)
+        
         
         right_finish_line = SKSpriteNode(color: UIColor.black, size: CGSize(width: 275, height: 50.0))
         right_finish_line.position = CGPoint(x:  200, y: 3 * screenHeight / -4)
         right_finish_line.zPosition = 100
         addChild(right_finish_line)
+        right_finish_line.addChild(right_sensitivity_slider)
         
         
         
@@ -416,6 +425,9 @@ class GameScene: SKScene {
                 //touching_right = true
                 right_sensitivity_display.text = String(describing: round(touch.force))
                 right_force = touch.force
+                
+                right_sensitivity_slider.position.x = (STARTING_RIGHT_SENSITIVITY_SLIDER_X.x + ( (right_force) * right_finish_line.size.width ) / touch.maximumPossibleForce)
+                
                 if ( touch.force >  (touch.maximumPossibleForce / 2.0) ) {
                     right_push_or_tap = "push"
                     right_push_or_tap_display.text = "push"
@@ -430,7 +442,9 @@ class GameScene: SKScene {
                 left_sensitivity_display.text = String(describing: round(touch.force))
                 left_force = touch.force
                 
-                left_sensity_slider.position.x = STARTING_LEFT_SENSITIVITY_SLIDER_X.x + ( (left_force) * left_finish_line.size.width ) / touch.maximumPossibleForce
+                left_sensitivity_slider.position.x = STARTING_LEFT_SENSITIVITY_SLIDER_X.x + ( (left_force) * left_finish_line.size.width ) / touch.maximumPossibleForce
+                
+                
                 
                 if ( touch.force >  (touch.maximumPossibleForce / 2.0) ) {
                     left_push_or_tap = "push"
