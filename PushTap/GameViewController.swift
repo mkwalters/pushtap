@@ -28,8 +28,8 @@ class GameViewController: UIViewController, GADInterstitialDelegate {
         //menuScene.scaleMode = .resizeFill
         //menuScene.inputViewController = self
         skView.presentScene(menuScene)
-        skView.showsFPS = true
-        skView.showsNodeCount = true
+//        skView.showsFPS = true
+//        skView.showsNodeCount = true
         NotificationCenter.default.addObserver(self, selector: #selector(self.showAd), name: NSNotification.Name(rawValue: "showAd"), object: nil)
         interstitial = createAndLoadInterstitial()
         let request = GADRequest()
@@ -44,7 +44,7 @@ class GameViewController: UIViewController, GADInterstitialDelegate {
     }
     
     func createAndLoadInterstitial() -> GADInterstitial {
-        var interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
+        let interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910")
         interstitial.delegate = self
         interstitial.load(GADRequest())
         return interstitial
