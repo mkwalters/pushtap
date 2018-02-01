@@ -7,6 +7,8 @@ target 'PushTap' do
 
   # Pods for PushTap
   pod 'Firebase/AdMob'
+  pod 'SwiftyStoreKit'
+  
   target 'PushTapTests' do
     inherit! :search_paths
     # Pods for testing

@@ -9,7 +9,7 @@ let SCREEN_SIZE = CGSize(width: 750.0, height: 1334.0)
 
 import SpriteKit
 import GameplayKit
-
+import SwiftyStoreKit
 
 class GameScene: SKScene {
     
@@ -85,10 +85,24 @@ class GameScene: SKScene {
         }
     }
     
+    func print_product_info() {
+        SwiftyStoreKit.retrieveProductsInfo(["54321"]) { result in
+            if let product = result.retrievedProducts.first {
+                let priceString = product.localizedPrice!
+                print("Product: \(product.localizedDescription), price: \(priceString)")
+            }
+            else if let invalidProductId = result.invalidProductIDs.first {
+                print("Invalid product identifier: \(invalidProductId)")
+            }
+            else {
+                print("Error: \(result.error)")
+            }
+        }
+    }
     
     func create_scene() {
         self.view?.isMultipleTouchEnabled = true
-        
+        print_product_info()
         
         pause_button.position = CGPoint(x: 0, y: 0)
         pause_button.scale(to: CGSize(width: pause_button.size.width * 1.8, height: pause_button.size.height * 1.8))

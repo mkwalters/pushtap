@@ -7,12 +7,13 @@
 
 import Foundation
 import SpriteKit
-
+import SwiftyStoreKit
 
 class StartMenu: SKScene {
     
     var play_button = SKLabelNode(text: "PLAY")
     
+    var remove_ads = SKLabelNode(text: "Remove ads")
     
     var title = SKLabelNode(text: "PUSHTAP")
     
@@ -34,7 +35,34 @@ class StartMenu: SKScene {
         
         addChild(title)
         
+        remove_ads.position = CGPoint(x: 0, y: -400)
+        remove_ads.fontColor = SKColor.red
+        remove_ads.fontSize = 80
+        remove_ads.name = "remove ads"
+        addChild(remove_ads)
         
+        
+    }
+    
+    func purchase_ad_removal() {
+        SwiftyStoreKit.purchaseProduct("54321", quantity: 1, atomically: true) { result in
+            switch result {
+            case .success(let purchase):
+                print("Purchase Success: \(purchase.productId)")
+            case .error(let error):
+                switch error.code {
+                case .unknown: print("Unknown error. Please contact support")
+                case .clientInvalid: print("Not allowed to make the payment")
+                case .paymentCancelled: break
+                case .paymentInvalid: print("The purchase identifier was invalid")
+                case .paymentNotAllowed: print("The device is not allowed to make the payment")
+                case .storeProductNotAvailable: print("The product is not available in the current storefront")
+                case .cloudServicePermissionDenied: print("Access to cloud service information is not allowed")
+                case .cloudServiceNetworkConnectionFailed: print("Could not connect to the network")
+                case .cloudServiceRevoked: print("User has revoked permission to use this cloud service")
+                }
+            }
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -48,6 +76,11 @@ class StartMenu: SKScene {
                     let reveal = SKTransition.doorsOpenHorizontal(withDuration: 0.25)
                     self.view?.presentScene(DifficultySelection(), transition: reveal)
                 }
+                
+                if name == "remove ads" {
+                    purchase_ad_removal()
+                }
+
                 
             }
         }

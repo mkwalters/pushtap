@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CFD96FAFE707AFA6C5775F83F7F56B33"
+               BlueprintIdentifier = "6D7DD8AF155225E0D1A29477A3752EAE"
                BuildableName = "Pods_PushTap.framework"
                BlueprintName = "Pods-PushTap"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "CFD96FAFE707AFA6C5775F83F7F56B33"
+            BlueprintIdentifier = "6D7DD8AF155225E0D1A29477A3752EAE"
             BuildableName = "Pods_PushTap.framework"
             BlueprintName = "Pods-PushTap"
             ReferencedContainer = "container:Pods.xcodeproj">
