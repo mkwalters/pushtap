@@ -10,6 +10,7 @@
 		346156704F4024C1F30433A4 /* Pods_PushTapTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1378A0621EE71067BA545ADF /* Pods_PushTapTests.framework */; };
 		5B0EFD05346498D0C15097A9 /* Pods_PushTap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 323C815A99D3B9A0CDA11156 /* Pods_PushTap.framework */; };
 		846539CB61BA072E6BB45D21 /* Pods_PushTapUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF63977AB6D4B8F4B28508D /* Pods_PushTapUITests.framework */; };
+		F76EABD4202381B400BE7279 /* GameOverScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76EABD3202381B400BE7279 /* GameOverScreen.swift */; };
 		F7F533BA20104A16004A214D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7F533B920104A16004A214D /* AppDelegate.swift */; };
 		F7F533BC20104A16004A214D /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7F533BB20104A16004A214D /* GameScene.sks */; };
 		F7F533BE20104A16004A214D /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = F7F533BD20104A16004A214D /* Actions.sks */; };
@@ -24,7 +25,6 @@
 		F7FDECBD2019360000D52E2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7FDECBB2019360000D52E2A /* GoogleService-Info.plist */; };
 		F7FDECBE2019360000D52E2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7FDECBB2019360000D52E2A /* GoogleService-Info.plist */; };
 		F7FDED0E2019BD0500D52E2A /* StartMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FDED0D2019BD0500D52E2A /* StartMenu.swift */; };
-		F7FDED102019C30A00D52E2A /* DifficultySelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7FDED0F2019C30A00D52E2A /* DifficultySelection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +54,7 @@
 		3FF63977AB6D4B8F4B28508D /* Pods_PushTapUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PushTapUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62B55D6FBC5EF34A288000C7 /* Pods-PushTap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PushTap.release.xcconfig"; path = "Pods/Target Support Files/Pods-PushTap/Pods-PushTap.release.xcconfig"; sourceTree = "<group>"; };
 		6EFEA7652921650244813DF3 /* Pods-PushTapUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PushTapUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PushTapUITests/Pods-PushTapUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F76EABD3202381B400BE7279 /* GameOverScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScreen.swift; sourceTree = "<group>"; };
 		F7F533B620104A16004A214D /* PushTap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PushTap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7F533B920104A16004A214D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7F533BB20104A16004A214D /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -72,7 +73,6 @@
 		F7F533E120104A16004A214D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7FDECBB2019360000D52E2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F7FDED0D2019BD0500D52E2A /* StartMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartMenu.swift; sourceTree = SOURCE_ROOT; };
-		F7FDED0F2019C30A00D52E2A /* DifficultySelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DifficultySelection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,11 +152,11 @@
 			isa = PBXGroup;
 			children = (
 				F7FDED0D2019BD0500D52E2A /* StartMenu.swift */,
-				F7FDED0F2019C30A00D52E2A /* DifficultySelection.swift */,
 				F7F533B920104A16004A214D /* AppDelegate.swift */,
 				F7F533BB20104A16004A214D /* GameScene.sks */,
 				F7F533BD20104A16004A214D /* Actions.sks */,
 				F7F533BF20104A16004A214D /* GameScene.swift */,
+				F76EABD3202381B400BE7279 /* GameOverScreen.swift */,
 				F7F533C120104A16004A214D /* GameViewController.swift */,
 				F7F533C320104A16004A214D /* Main.storyboard */,
 				F7F533C620104A16004A214D /* Assets.xcassets */,
@@ -489,9 +489,9 @@
 			files = (
 				F7F533C020104A16004A214D /* GameScene.swift in Sources */,
 				F7FDED0E2019BD0500D52E2A /* StartMenu.swift in Sources */,
-				F7FDED102019C30A00D52E2A /* DifficultySelection.swift in Sources */,
 				F7F533C220104A16004A214D /* GameViewController.swift in Sources */,
 				F7F533BA20104A16004A214D /* AppDelegate.swift in Sources */,
+				F76EABD4202381B400BE7279 /* GameOverScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

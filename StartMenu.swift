@@ -9,9 +9,18 @@ import Foundation
 import SpriteKit
 import SwiftyStoreKit
 
+
+// this is probably where all constants should live. I think there are some sprinkled throughout the other classes
+let ICON_SIZE = CGSize(width: 120, height: 120)
+
 class StartMenu: SKScene {
     
-    var play_button = SKLabelNode(text: "PLAY")
+    // these are the assets that i want to use
+    // https://www.gameart2d.com/free-casual-game-button-pack.html
+    
+    
+    
+    var play_button = SKSpriteNode(imageNamed: "play_button")
     
     var remove_ads = SKLabelNode(text: "Remove ads")
     
@@ -24,9 +33,9 @@ class StartMenu: SKScene {
         self.size = SCREEN_SIZE
         
         play_button.position = CGPoint(x: 0, y: -100)
-        play_button.fontColor = SKColor.red
-        play_button.fontSize = 100
         play_button.name = "play"
+        
+        play_button.size = ICON_SIZE
         addChild(play_button)
         
         title.position = CGPoint(x: 0, y: 325)
@@ -73,8 +82,8 @@ class StartMenu: SKScene {
             if let name = touchedNode.name
             {
                 if name == "play" {
-                    let reveal = SKTransition.doorsOpenHorizontal(withDuration: 0.25)
-                    self.view?.presentScene(DifficultySelection(), transition: reveal)
+                    let reveal = SKTransition.doorway(withDuration: 0.25)
+                    self.view?.presentScene(GameScene(), transition: reveal)
                 }
                 
                 if name == "remove ads" {

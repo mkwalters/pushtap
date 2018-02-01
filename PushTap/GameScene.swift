@@ -24,15 +24,15 @@ class GameScene: SKScene {
     var pause = SKLabelNode(text: "pause")
     
     var score_report = SKLabelNode(text: "0")
-    var restart = SKLabelNode()
+    var restart = SKSpriteNode(imageNamed: "restart button")
     
     var STARTING_LEFT_SENSITIVITY_SLIDER_X = CGPoint(x: 0, y: 0)
     var STARTING_RIGHT_SENSITIVITY_SLIDER_X = CGPoint(x: 0, y: 0)
     
     var dead = false
     var score = 0.0
-    var resume = SKLabelNode()
-    var exit = SKLabelNode()
+    var resume = SKSpriteNode()
+    var exit = SKSpriteNode()
     
     var right_sensitivity_display = SKLabelNode(text: "0")
     var right_push_or_tap =  ""
@@ -53,12 +53,13 @@ class GameScene: SKScene {
     
     var paused_game = false
     
-    let restart_button = SKLabelNode(text: "RESTART")
+    let restart_button = SKSpriteNode()
     
     var emitter = SKEmitterNode()
     
-    var score_background = SKSpriteNode(color: UIColor.black, size: CGSize(width: 100, height: 100))
+//    var score_background = SKSpriteNode(color: UIColor.black, size: CGSize(width: 100, height: 100))
     
+    var score_background = SKSpriteNode(imageNamed: "score_background")
     
     // we really hsould build more constants
     var left_sensitivity_slider = SKSpriteNode(color: SKColor.purple, size: CGSize(width: 20, height: 50))
@@ -71,18 +72,18 @@ class GameScene: SKScene {
     //Designed by Freepik from www.flaticon.com IN CREDITS
     //probably best to just find one under creative commons license
     //its worth noting that we probably not necessary to implement a credits page
-    var pause_button = SKSpriteNode(imageNamed: "pause")
+    var pause_button = SKSpriteNode(imageNamed: "pause_button")
     
     
     
     func update_score(new_score: Double) {
         score_report.text = String(Int(new_score))
         
-        if (Int(new_score) % 2) == 1 {
-            score_report.fontColor = SKColor.blue
-        } else {
-            score_report.fontColor = SKColor.red
-        }
+//        if (Int(new_score) % 2) == 1 {
+//            score_report.fontColor = SKColor.blue
+//        } else {
+//            score_report.fontColor = SKColor.red
+//        }
     }
     
     func print_product_info() {
@@ -104,8 +105,11 @@ class GameScene: SKScene {
         self.view?.isMultipleTouchEnabled = true
         print_product_info()
         
+        score_background.size = ICON_SIZE
+        
         pause_button.position = CGPoint(x: 0, y: 0)
-        pause_button.scale(to: CGSize(width: pause_button.size.width * 1.8, height: pause_button.size.height * 1.8))
+        //pause_button.scale(to: CGSize(width: pause_button.size.width * 1.8, height: pause_button.size.height * 1.8))
+        pause_button.size = ICON_SIZE
         //addChild(pause_button)
         score_background.position = CGPoint(x: SCREEN_SIZE.width / 2.0 - 100, y: SCREEN_SIZE.height / 2.0 - 100)
         addChild(score_background)
@@ -117,7 +121,7 @@ class GameScene: SKScene {
         
         //left_sensitivity_slider.anchorPoint = CGPoint(x: 0, y: 0.5)
         
-        pause_button.position = CGPoint(x: -1 * SCREEN_SIZE.width / 2.0 + 100, y: SCREEN_SIZE.height / 2.0 - 100)
+        pause_button.position = CGPoint(x: -1 * (SCREEN_SIZE.width / 2.0 - 100), y: SCREEN_SIZE.height / 2.0 - 100)
         pause_button.name = "pause"
         // the high z position just ensures that the ui is always at the top level
         pause_button.zPosition = 1000000
@@ -134,17 +138,20 @@ class GameScene: SKScene {
         //score_report.position = CGPoint(x: SCREEN_SIZE.width / 2.0 - 100, y: SCREEN_SIZE.height / 2.0 - 100)
         score_report.position = CGPoint(x: 0, y: 0)
         score_report.fontSize = 70
-        score_report.fontColor = SKColor.red
+        score_report.fontColor = SKColor.blue
         score_report.horizontalAlignmentMode = .center
         score_report.verticalAlignmentMode = .center
+        score_report.zPosition =  99999
+        score_report.fontName = "AppleSDGothicNeo"
         score_background.addChild(score_report)
         
         self.size = SCREEN_SIZE
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
-        restart_button.fontColor = SKColor.green
-        restart_button.position = CGPoint(x: 0, y: 0)
-        restart_button.fontSize = 70
+        
+//        restart_button.fontColor = SKColor.green
+//        restart_button.position = CGPoint(x: 0, y: 0)
+//        restart_button.fontSize = 70
         restart_button.name = "restart"
         score = 0
         
@@ -392,28 +399,56 @@ class GameScene: SKScene {
                         
                         
                         
-                        resume = SKLabelNode(text: "Resume")
+//                        resume = SKLabelNode(text: "Resume")
+//                        resume.position = CGPoint(x: 0, y: 200)
+//                        resume.fontName = "PressStart2P"
+//                        resume.fontSize = 70
+//                        resume.fontColor = SKColor.blue
+//                        resume.name = "resume"
+//                        resume.zPosition = 999999999
+                        
+                        resume = SKSpriteNode(imageNamed: "play_button")
                         resume.position = CGPoint(x: 0, y: 200)
-                        resume.fontName = "PressStart2P"
-                        resume.fontSize = 70
-                        resume.fontColor = SKColor.blue
+                        resume.size = ICON_SIZE
+//                        resume.fontName = "PressStart2P"
+//                        resume.fontSize = 70
+//                        resume.fontColor = SKColor.blue
                         resume.name = "resume"
+                        //keep ui on the top level
                         resume.zPosition = 999999999
                         
-                        restart = SKLabelNode(text: "Restart")
+//                        restart = SKLabelNode(text: "Restart")
+//                        restart.position = CGPoint(x: 0, y: 0)
+//                        restart.fontName = "PressStart2P"
+//                        restart.fontSize = 70
+//                        //                restart.fontColor = blue
+//                        restart.name = "restart"
+//                        restart.zPosition = 999999999
+
+                        restart = SKSpriteNode(imageNamed: "restart_button")
                         restart.position = CGPoint(x: 0, y: 0)
-                        restart.fontName = "PressStart2P"
-                        restart.fontSize = 70
+                        restart.size = ICON_SIZE
+//                        restart.fontName = "PressStart2P"
+//                        restart.fontSize = 70
                         //                restart.fontColor = blue
                         restart.name = "restart"
                         restart.zPosition = 999999999
+
                         
+//                        exit = SKLabelNode(text: "Exit")
+//                        exit.position = CGPoint(x: 0, y: -200)
+//                        exit.fontName = "PressStart2P"
+//                        exit.fontSize = 60
+//                        exit.fontColor = SKColor.blue
+//                        exit.name = "exit"
+//                        exit.zPosition = 999999999
                         
-                        exit = SKLabelNode(text: "Exit")
+                        exit = SKSpriteNode(imageNamed: "home_button")
                         exit.position = CGPoint(x: 0, y: -200)
-                        exit.fontName = "PressStart2P"
-                        exit.fontSize = 60
-                        exit.fontColor = SKColor.blue
+//                        exit.fontName = "PressStart2P"
+//                        exit.fontSize = 60
+//                        exit.fontColor = SKColor.blue
+                        exit.size = ICON_SIZE
                         exit.name = "exit"
                         exit.zPosition = 999999999
                         

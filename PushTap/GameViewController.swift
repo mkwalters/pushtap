@@ -74,6 +74,18 @@ class GameViewController: UIViewController, GADInterstitialDelegate {
     func interstitialDidDismissScreen(_ ad: GADInterstitial) {
         //print("interstitialDidDismissScreen")
         interstitial = createAndLoadInterstitial()
+        
+//        let menuScene = GameOverScreen()
+//        //MenuScene.
+//        let skView = view as! SKView
+//        //        skView.showsFPS = true
+//        //        skView.showsNodeCount = true
+//        //skView.ignoresSiblingOrder = true
+//        //menuScene.scaleMode = .resizeFill
+//        //menuScene.inputViewController = self
+//        skView.presentScene(menuScene)
+        
+        
     }
     
     /// Tells the delegate that a user click will open another app
