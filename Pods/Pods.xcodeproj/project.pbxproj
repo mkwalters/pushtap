@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -77,14 +77,14 @@
 
 /* Begin PBXFileReference section */
 		020D5B3107287E882DB658E386FB283A /* Pods-PushTapUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PushTapUITests-dummy.m"; sourceTree = "<group>"; };
-		098A6AF567DC0402502FC302307FE3BF /* pb_common.c */ = {isa = PBXFileReference; includeInIndex = 1; path = pb_common.c; sourceTree = "<group>"; };
+		098A6AF567DC0402502FC302307FE3BF /* pb_common.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; path = pb_common.c; sourceTree = "<group>"; };
 		0C56D5B156DAA08CC32F162C760DC3CC /* Pods-PushTapTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PushTapTests-frameworks.sh"; sourceTree = "<group>"; };
-		108A0B7EEE50488D45993C80B0A0374E /* pb_encode.c */ = {isa = PBXFileReference; includeInIndex = 1; path = pb_encode.c; sourceTree = "<group>"; };
+		108A0B7EEE50488D45993C80B0A0374E /* pb_encode.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; path = pb_encode.c; sourceTree = "<group>"; };
 		13E3BAB446ABEC3833DF8E185C503D0B /* GoogleToolboxForMac-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GoogleToolboxForMac-dummy.m"; sourceTree = "<group>"; };
 		193A430654D368CB8B99C4936EDA4F31 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCoreDiagnostics.framework; path = Frameworks/FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
-		1E17D53B5720518F33A29FA7391AA9F0 /* GoogleToolboxForMac.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = GoogleToolboxForMac.modulemap; sourceTree = "<group>"; };
+		1E17D53B5720518F33A29FA7391AA9F0 /* GoogleToolboxForMac.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = GoogleToolboxForMac.modulemap; sourceTree = "<group>"; };
 		1E5482874E578ACD5F3433BAA8F775E9 /* GoogleToolboxForMac.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleToolboxForMac.xcconfig; sourceTree = "<group>"; };
-		1E5C77D53ED579331FA8D93DCB90F2F5 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GoogleToolboxForMac.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E5C77D53ED579331FA8D93DCB90F2F5 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E7C91FEB3AB92A33054149A0CBC8754 /* CompleteTransactionsController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CompleteTransactionsController.swift; path = SwiftyStoreKit/CompleteTransactionsController.swift; sourceTree = "<group>"; };
 		1E9C94E0FE73B73B2133BE7985C88275 /* Pods-PushTapTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PushTapTests-dummy.m"; sourceTree = "<group>"; };
 		2051183DE9A33DA3709E54BEF6E8DD79 /* Pods-PushTapUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PushTapUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -94,18 +94,18 @@
 		2E0F8978214CBA9EB62CFF94D1B98E80 /* Pods-PushTapUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PushTapUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		2E5B49A0F10F9EA0A675E8D87FD18A25 /* Pods-PushTapUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PushTapUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		304529ACC6F0639F447F3F28AB7DCC9E /* PaymentsController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentsController.swift; path = SwiftyStoreKit/PaymentsController.swift; sourceTree = "<group>"; };
-		33390955E21A940EC3EF41246D952B34 /* Pods-PushTapUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-PushTapUITests.modulemap"; sourceTree = "<group>"; };
+		33390955E21A940EC3EF41246D952B34 /* Pods-PushTapUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-PushTapUITests.modulemap"; sourceTree = "<group>"; };
 		38FB5D1D6C668E079787BF81062B5B7A /* SwiftyStoreKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyStoreKit-prefix.pch"; sourceTree = "<group>"; };
 		39BF02E5085BD482EB9AE2A5DBB6B81B /* nanopb.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = nanopb.xcconfig; sourceTree = "<group>"; };
 		3E1D0DD65E07DF35F34BA314FA1DCF93 /* ProductsInfoController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ProductsInfoController.swift; path = SwiftyStoreKit/ProductsInfoController.swift; sourceTree = "<group>"; };
-		3F2F8139E8CD41EE027DC520B211BC95 /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = nanopb.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F2F8139E8CD41EE027DC520B211BC95 /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		455626717E427E3B880F38DA71D00B2A /* Pods-PushTap-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PushTap-frameworks.sh"; sourceTree = "<group>"; };
 		4612B5B7FE097F736BFAB9A5340D4FA5 /* PaymentQueueController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaymentQueueController.swift; path = SwiftyStoreKit/PaymentQueueController.swift; sourceTree = "<group>"; };
 		48A8EDF7B2BB2B9FF5FC04E893C19772 /* Pods-PushTapTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PushTapTests.release.xcconfig"; sourceTree = "<group>"; };
-		492D951CF4C67DBC8E2E330C8F718004 /* Pods_PushTapTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PushTapTests.framework; path = "Pods-PushTapTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		492D951CF4C67DBC8E2E330C8F718004 /* Pods_PushTapTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PushTapTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A53F4EB69800F5B2674FE0C14B256CA /* OS.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OS.swift; path = SwiftyStoreKit/OS.swift; sourceTree = "<group>"; };
 		5176A34C80B6F914300B337FC3F38BC9 /* nanopb-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "nanopb-dummy.m"; sourceTree = "<group>"; };
-		522D00232A40BF8450BB24D5B6EB2824 /* SwiftyStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyStoreKit.framework; path = SwiftyStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		522D00232A40BF8450BB24D5B6EB2824 /* SwiftyStoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyStoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		54C55D80E57365F6676FC8B6B095B8FE /* Pods-PushTapUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PushTapUITests-resources.sh"; sourceTree = "<group>"; };
 		5936B2B496D3A57230A85DB48BF28AC3 /* Pods-PushTapUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PushTapUITests-umbrella.h"; sourceTree = "<group>"; };
 		5AA609D6AA244417B18953E4B5116911 /* Pods-PushTap-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PushTap-resources.sh"; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 		73B368EC1470B04194208D1CBC84630C /* pb.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = pb.h; sourceTree = "<group>"; };
 		76F2ACF74198E4C4FF8A32D236FF2F57 /* Pods-PushTapUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PushTapUITests.release.xcconfig"; sourceTree = "<group>"; };
 		77FB4200177EC935D19BF66C813A3A33 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
-		79EBBE2D56E63859734EFEF511CACCF5 /* SwiftyStoreKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftyStoreKit.modulemap; sourceTree = "<group>"; };
+		79EBBE2D56E63859734EFEF511CACCF5 /* SwiftyStoreKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = SwiftyStoreKit.modulemap; sourceTree = "<group>"; };
 		7D511BC4E526C30B7B61E93F06172BC5 /* GTMNSData+zlib.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "GTMNSData+zlib.m"; path = "Foundation/GTMNSData+zlib.m"; sourceTree = "<group>"; };
 		7F971A5AE0C83A04F76AED7B3D96D60E /* Pods-PushTapTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PushTapTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		7F9AF4BF1139E0B5DA7E211467227B8B /* InAppReceiptRefreshRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InAppReceiptRefreshRequest.swift; path = SwiftyStoreKit/InAppReceiptRefreshRequest.swift; sourceTree = "<group>"; };
@@ -132,28 +132,28 @@
 		8F7A27B8F3F51BBC570B75C43AB51373 /* Pods-PushTap-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PushTap-acknowledgements.plist"; sourceTree = "<group>"; };
 		900860D4FDD21C3190CB62F0276955C2 /* GoogleToolboxForMac-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleToolboxForMac-umbrella.h"; sourceTree = "<group>"; };
 		92B836F0FA3B65DCD34959801FFCE422 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Frameworks/FirebaseCore.framework; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9517898E334DBE2A27543CEC30548557 /* InAppProductQueryRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InAppProductQueryRequest.swift; path = SwiftyStoreKit/InAppProductQueryRequest.swift; sourceTree = "<group>"; };
 		98900873343720B1452FC52E77EE63BD /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D733B8FB0DDEEBF978601B27E9F582B /* Pods-PushTapTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-PushTapTests-umbrella.h"; sourceTree = "<group>"; };
 		9E068D533FDC02290D6AB970448F656B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F0EE18636C3C7D58EB2A4A033D91965 /* GoogleToolboxForMac-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleToolboxForMac-prefix.pch"; sourceTree = "<group>"; };
 		A913C127842B1B51B7D858DB1D37B308 /* SwiftyStoreKit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyStoreKit.swift; path = SwiftyStoreKit/SwiftyStoreKit.swift; sourceTree = "<group>"; };
-		AB83C27E823E99E66825776DB695E421 /* Pods_PushTapUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PushTapUITests.framework; path = "Pods-PushTapUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB83C27E823E99E66825776DB695E421 /* Pods_PushTapUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PushTapUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0286F808F872CCB265FA9FF7B565E58 /* nanopb-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "nanopb-prefix.pch"; sourceTree = "<group>"; };
-		B1437E8F65CBC32BBC9628650B9A539C /* nanopb.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = nanopb.modulemap; sourceTree = "<group>"; };
+		B1437E8F65CBC32BBC9628650B9A539C /* nanopb.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = nanopb.modulemap; sourceTree = "<group>"; };
 		B30E528B7933367DD44C5277C44EE1AF /* Pods-PushTap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PushTap.release.xcconfig"; sourceTree = "<group>"; };
 		BB191EAD9F9568AC46277D54C64B031C /* GTMDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		C1800EC1BE0890E060B371ABFBE26058 /* Pods-PushTap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PushTap.debug.xcconfig"; sourceTree = "<group>"; };
-		C354A9F273D937E33061A5F12AEA8AE3 /* pb_decode.c */ = {isa = PBXFileReference; includeInIndex = 1; path = pb_decode.c; sourceTree = "<group>"; };
+		C354A9F273D937E33061A5F12AEA8AE3 /* pb_decode.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; path = pb_decode.c; sourceTree = "<group>"; };
 		C4FA9902B8C920B58E3F906B1361E805 /* AppleReceiptValidator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppleReceiptValidator.swift; path = SwiftyStoreKit/AppleReceiptValidator.swift; sourceTree = "<group>"; };
 		C8CB1AE279F6D0D5AB691D85F32CB4AE /* InAppReceipt.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InAppReceipt.swift; path = SwiftyStoreKit/InAppReceipt.swift; sourceTree = "<group>"; };
 		CE2976C79201821953320198204CC9C7 /* Pods-PushTap-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-PushTap-dummy.m"; sourceTree = "<group>"; };
-		CFF440FFF549E3411C867C45E0DEBBF8 /* Pods-PushTapTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-PushTapTests.modulemap"; sourceTree = "<group>"; };
+		CFF440FFF549E3411C867C45E0DEBBF8 /* Pods-PushTapTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-PushTapTests.modulemap"; sourceTree = "<group>"; };
 		D2711ADA780DD91461FFFE8247CED566 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Frameworks/frameworks/GoogleMobileAds.framework; sourceTree = "<group>"; };
-		D3209C3E1EBAA449B165EFFAFE118E38 /* Pods_PushTap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_PushTap.framework; path = "Pods-PushTap.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3209C3E1EBAA449B165EFFAFE118E38 /* Pods_PushTap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PushTap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D687F07691F7E215F8EC65BD4277463A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D92CA826F97DBFF3875E039A166A6EEC /* Pods-PushTap.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-PushTap.modulemap"; sourceTree = "<group>"; };
+		D92CA826F97DBFF3875E039A166A6EEC /* Pods-PushTap.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-PushTap.modulemap"; sourceTree = "<group>"; };
 		DED4330DC4118963441E6CE60255B1C7 /* pb_common.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = pb_common.h; sourceTree = "<group>"; };
 		E93BEB54004BE2E89FEAD3AD137E5329 /* SwiftyStoreKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyStoreKit.xcconfig; sourceTree = "<group>"; };
 		EAF440394E99DA8A2B107069D2433B27 /* GTMNSData+zlib.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GTMNSData+zlib.h"; path = "Foundation/GTMNSData+zlib.h"; sourceTree = "<group>"; };
@@ -283,7 +283,6 @@
 				80A81EAC603E51700A94ABE7818A1541 /* SwiftyStoreKit+Types.swift */,
 				7AB30FACF3E4C4F77FDADF315429F422 /* Support Files */,
 			);
-			name = SwiftyStoreKit;
 			path = SwiftyStoreKit;
 			sourceTree = "<group>";
 		};
@@ -292,7 +291,6 @@
 			children = (
 				1671A8EA3BC13CAD2BE97E7DF4D18027 /* Frameworks */,
 			);
-			name = FirebaseCore;
 			path = FirebaseCore;
 			sourceTree = "<group>";
 		};
@@ -322,7 +320,6 @@
 			children = (
 				11C3FD0EBF35027E016171B89A3DE865 /* Frameworks */,
 			);
-			name = "Google-Mobile-Ads-SDK";
 			path = "Google-Mobile-Ads-SDK";
 			sourceTree = "<group>";
 		};
@@ -331,7 +328,6 @@
 			children = (
 				80B34F33D9A86EB4463CA79D70A2BE52 /* Core */,
 			);
-			name = Firebase;
 			path = Firebase;
 			sourceTree = "<group>";
 		};
@@ -340,7 +336,6 @@
 			children = (
 				879B541527A3DED729923802B2C00A75 /* Frameworks */,
 			);
-			name = FirebaseInstanceID;
 			path = FirebaseInstanceID;
 			sourceTree = "<group>";
 		};
@@ -424,7 +419,6 @@
 				3E99D5D76E4E3B6F5B325BC6B5190991 /* encode */,
 				4FD88CE2949014E19F114DE59BE1C0B0 /* Support Files */,
 			);
-			name = nanopb;
 			path = nanopb;
 			sourceTree = "<group>";
 		};
@@ -433,7 +427,6 @@
 			children = (
 				71BFD6E78FED3B9026E50B19AD744A8A /* Frameworks */,
 			);
-			name = FirebaseAnalytics;
 			path = FirebaseAnalytics;
 			sourceTree = "<group>";
 		};
@@ -470,7 +463,6 @@
 				D8712D150783A5F5EEF5E3966967A4C9 /* NSData+zlib */,
 				DD8C245624CF69F8C2B62BD2070E2C8D /* Support Files */,
 			);
-			name = GoogleToolboxForMac;
 			path = GoogleToolboxForMac;
 			sourceTree = "<group>";
 		};
@@ -720,7 +712,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0920;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -984,6 +976,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
