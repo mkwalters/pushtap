@@ -9,8 +9,10 @@ let SCREEN_SIZE = CGSize(width: 750.0, height: 1334.0)
 
 import SpriteKit
 import GameplayKit
-//this is just for a git examplew
+
+
 class GameScene: SKScene {
+    
 
     var left_sensitivity_display = SKLabelNode(text: "0")
     var left_push_or_tap =  ""
@@ -55,6 +57,9 @@ class GameScene: SKScene {
     
     var emitter = SKEmitterNode()
     
+    var score_background = SKSpriteNode(color: UIColor.black, size: CGSize(width: 100, height: 100))
+    
+    
     // we really hsould build more constants
     var left_sensitivity_slider = SKSpriteNode(color: SKColor.purple, size: CGSize(width: 20, height: 50))
     var right_sensitivity_slider = SKSpriteNode(color: SKColor.purple, size: CGSize(width: 20, height: 50))
@@ -72,16 +77,24 @@ class GameScene: SKScene {
     
     func update_score(new_score: Double) {
         score_report.text = String(Int(new_score))
+        
+        if (Int(new_score) % 2) == 1 {
+            score_report.fontColor = SKColor.blue
+        } else {
+            score_report.fontColor = SKColor.red
+        }
     }
     
     
     func create_scene() {
         self.view?.isMultipleTouchEnabled = true
         
+        
         pause_button.position = CGPoint(x: 0, y: 0)
         pause_button.scale(to: CGSize(width: pause_button.size.width * 1.8, height: pause_button.size.height * 1.8))
         //addChild(pause_button)
-        
+        score_background.position = CGPoint(x: SCREEN_SIZE.width / 2.0 - 100, y: SCREEN_SIZE.height / 2.0 - 100)
+        addChild(score_background)
         
         paused_game = false
         
@@ -104,10 +117,13 @@ class GameScene: SKScene {
         addChild(emitter)
         
         
-        score_report.position = CGPoint(x: SCREEN_SIZE.width / 2.0 - 100, y: SCREEN_SIZE.height / 2.0 - 100)
-        score_report.fontSize = 100
+        //score_report.position = CGPoint(x: SCREEN_SIZE.width / 2.0 - 100, y: SCREEN_SIZE.height / 2.0 - 100)
+        score_report.position = CGPoint(x: 0, y: 0)
+        score_report.fontSize = 70
         score_report.fontColor = SKColor.red
-        addChild(score_report)
+        score_report.horizontalAlignmentMode = .center
+        score_report.verticalAlignmentMode = .center
+        score_background.addChild(score_report)
         
         self.size = SCREEN_SIZE
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
