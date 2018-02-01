@@ -428,6 +428,7 @@ class GameScene: SKScene {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         
         if dead == false && paused_game == false {
+            print(touches.count)
         
         for touch in touches {
 //            var touching_left = false
@@ -488,8 +489,10 @@ class GameScene: SKScene {
         for touch in touches {
             if (touch.location(in: self).x >= 0) {
                 right_finish_line.color = SKColor.black
+                right_force = 0
             } else {
                 left_finish_line.color = SKColor.black
+                left_force = 0
             }
         }
     }
