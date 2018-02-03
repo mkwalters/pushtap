@@ -28,6 +28,8 @@ class StartMenu: SKScene {
     
     var title = SKLabelNode(text: "PUSHTAP")
     
+    var rate = SKLabelNode(text: "RATE")
+    
     override func didMove(to view: SKView) {
         print("start menu")
         self.backgroundColor =  SKColor(red: CGFloat(1), green: CGFloat(1), blue: CGFloat(1), alpha: 1.0)
@@ -40,6 +42,14 @@ class StartMenu: SKScene {
         high_score.fontSize = 80
         
         addChild(high_score)
+        
+        rate.position = CGPoint(x: 0, y: -400)
+        //rate.text = String(describing: get_high_score())
+        rate.fontColor = SKColor.blue
+        rate.name = "rate"
+        rate.fontSize = 80
+        
+        addChild(rate)
         
         play_button.position = CGPoint(x: 0, y: 0)
         play_button.name = "play"
@@ -61,6 +71,22 @@ class StartMenu: SKScene {
         //addChild(remove_ads)
         
         
+    }
+    
+    func go_to_app_store() {
+        print("trying to go to the app store")
+
+//        if (UIApplication.shared.canOpenURL(NSURL(string:"baz")! as URL)) {
+//            UIApplication.shared.openURL(NSURL(string: "foobar")! as URL) //    }
+//        }
+        
+        let urlStr = "itms://itunes.apple.com/us/app/apple-store/id375380948?mt=8"
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(URL(string: urlStr)!, options: [:], completionHandler: nil)
+            
+        } else {
+            UIApplication.shared.openURL(URL(string: urlStr)!)
+        }
     }
     
     func get_high_score() -> Int {
@@ -102,6 +128,10 @@ class StartMenu: SKScene {
                 
                 if name == "remove ads" {
                     purchase_ad_removal()
+                }
+                
+                if name == "rate" {
+                    go_to_app_store()
                 }
 
                 
