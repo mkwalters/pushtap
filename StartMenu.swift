@@ -20,6 +20,8 @@ class StartMenu: SKScene {
     
     
     
+    var high_score = SKLabelNode(text: "0")
+    
     var play_button = SKSpriteNode(imageNamed: "play_button")
     
     var remove_ads = SKLabelNode(text: "Remove ads")
@@ -28,18 +30,26 @@ class StartMenu: SKScene {
     
     override func didMove(to view: SKView) {
         print("start menu")
-        self.backgroundColor = SKColor.black
+        self.backgroundColor =  SKColor(red: CGFloat(1), green: CGFloat(1), blue: CGFloat(1), alpha: 1.0)
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         self.size = SCREEN_SIZE
         
-        play_button.position = CGPoint(x: 0, y: -100)
+        high_score.position = CGPoint(x: 0, y: -200)
+        high_score.text = String(describing: get_high_score())
+        high_score.fontColor = SKColor.blue
+        high_score.fontSize = 80
+        
+        addChild(high_score)
+        
+        play_button.position = CGPoint(x: 0, y: 0)
         play_button.name = "play"
         
         play_button.size = ICON_SIZE
         addChild(play_button)
         
         title.position = CGPoint(x: 0, y: 325)
-        title.color = SKColor.purple
+        title.fontColor = SKColor.purple
+        title.zPosition = 10000
         title.fontSize = 150
         
         addChild(title)
@@ -48,9 +58,13 @@ class StartMenu: SKScene {
         remove_ads.fontColor = SKColor.red
         remove_ads.fontSize = 80
         remove_ads.name = "remove ads"
-        addChild(remove_ads)
+        //addChild(remove_ads)
         
         
+    }
+    
+    func get_high_score() -> Int {
+        return(UserDefaults.standard.integer(forKey: "high_score"))
     }
     
     func purchase_ad_removal() {

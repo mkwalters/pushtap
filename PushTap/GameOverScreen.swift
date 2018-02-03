@@ -27,9 +27,10 @@ class GameOverScreen: SKScene {
         self.size = SCREEN_SIZE
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         
-        for i in 0...100 {
+        for _ in 0...100 {
             print("im trying to show the game over screen")
         }
+        
         game_over_label.position = CGPoint(x: 0, y: 300)
         game_over_label.fontColor = SKColor.red
         game_over_label.fontSize = 100
@@ -62,7 +63,7 @@ class GameOverScreen: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        for touch in touches {
+        for _ in touches {
             
 //            let positionInScene = touch.location(in: self)
 //            let touchedNode = atPoint(positionInScene)

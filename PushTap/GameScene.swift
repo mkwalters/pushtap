@@ -79,11 +79,11 @@ class GameScene: SKScene {
     func update_score(new_score: Double) {
         score_report.text = String(Int(new_score))
         
-//        if (Int(new_score) % 2) == 1 {
-//            score_report.fontColor = SKColor.blue
-//        } else {
-//            score_report.fontColor = SKColor.red
-//        }
+        if (Int(new_score) % 2) == 1 {
+            score_report.fontColor = SKColor.red
+        } else {
+            score_report.fontColor = SKColor.blue
+        }
     }
     
     func print_product_info() {
@@ -112,7 +112,7 @@ class GameScene: SKScene {
         pause_button.size = ICON_SIZE
         //addChild(pause_button)
         score_background.position = CGPoint(x: SCREEN_SIZE.width / 2.0 - 100, y: SCREEN_SIZE.height / 2.0 - 100)
-        addChild(score_background)
+        //addChild(score_background)
         
         paused_game = false
         
@@ -125,7 +125,7 @@ class GameScene: SKScene {
         pause_button.name = "pause"
         // the high z position just ensures that the ui is always at the top level
         pause_button.zPosition = 1000000
-        addChild(pause_button)
+        //addChild(pause_button)
         
         
         emitter.particlePosition = CGPoint(x: 0, y: 0)
@@ -135,15 +135,15 @@ class GameScene: SKScene {
         addChild(emitter)
         
         
-        //score_report.position = CGPoint(x: SCREEN_SIZE.width / 2.0 - 100, y: SCREEN_SIZE.height / 2.0 - 100)
-        score_report.position = CGPoint(x: 0, y: 0)
-        score_report.fontSize = 70
+        score_report.position = CGPoint(x: 0, y: SCREEN_SIZE.height / 2.0 - 100)
+        //score_report.position = CGPoint(x: 0, y: 0)
+        score_report.fontSize = 90
         score_report.fontColor = SKColor.blue
         score_report.horizontalAlignmentMode = .center
         score_report.verticalAlignmentMode = .center
         score_report.zPosition =  99999
         score_report.fontName = "AppleSDGothicNeo"
-        score_background.addChild(score_report)
+        addChild(score_report)
         
         self.size = SCREEN_SIZE
         self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
@@ -581,22 +581,52 @@ class GameScene: SKScene {
     }
     
     
+    func update_high_score(new_score: Double) {
+        UserDefaults.standard.set(new_score, forKey: "high_score")
+        print(UserDefaults.standard.integer(forKey: "high_score"))
+    }
+    
     
     func report_death() {
         
         if dead == false {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showAd"), object: nil)
+            //UNCOMMENT THIS GUY FOR ADS TO BE PRESENT
+            //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "showAd"), object: nil)
+            
+            
+            update_high_score(new_score: score)
+            let game_over_screen_background = SKSpriteNode(color: UIColor.black  , size: CGSize(width: 500, height: 900))
+            game_over_screen_background.position = CGPoint(x: 0, y: 0)
+            addChild(game_over_screen_background)
+            
+            let restart = SKSpriteNode(imageNamed: "restart_button")
+            restart.size = ICON_SIZE
+            restart.name = "restart"
+            restart.position = CGPoint(x: 0, y: 70)
+            game_over_screen_background.addChild(restart)
+            
+            let home = SKSpriteNode(imageNamed: "home_button")
+            home.size = ICON_SIZE
+            home.name = "exit"
+            home.position = CGPoint(x: 0, y: -120)
+            game_over_screen_background.addChild(home)
         
-            let death_report = SKLabelNode(text: "YOU DIED")
+            let death_report = SKLabelNode(text: "GAME OVER")
             death_report.position = CGPoint(x: 0, y: 200)
             death_report.fontColor = SKColor.red
-            death_report.fontSize = 100
+            death_report.fontSize = 70
+            
+            let ads = SKLabelNode(text: "ADS")
+            ads.position = CGPoint(x: 0, y: -300)
+            ads.fontColor = SKColor.red
+            ads.fontSize = 40
+            
+            game_over_screen_background.addChild(ads)
+            
             
             addChild(restart_button)
             stop_all_actions()
-            
-            //toggle this to trigger reports
-            addChild(death_report)
+            game_over_screen_background.addChild(death_report)
             
             dead = true
             
